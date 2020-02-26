@@ -1,39 +1,58 @@
 <?php
 
+session_start();
+
+
 
 class userpdo
 {
+	
 	private $id;
 	public 	$login;
+	public 	$nom;
+	public 	$prenom;
 	public 	$email;
-	public 	$firstname;
-	public 	$lastname;
+	public 	$password;
 
 
-
-public function register($login, $password, $email, $firstname, $lastname)
+public function register($login, $nom, $prenom, $email, $password)
 {
-	include('connect.php');
-	$user = $base->query("SELECT *FROM users WHERE login='$login'");
+	include("connect.php");
+	$user = $base->query("SELECT *FROM utilisateurs WHERE login='$login'");
 	$etat = $user->rowCount();
 
-		if($etat== 0)
-		{ 
-			$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
-			$requser = $base->query("INSERT INTO users VALUES(NULL, '$login', '$hash', '$email','$firstname','$lastname')");
-			return array($login, $password, $email, $firstname, $lastname);
+		if($_POST['pass1']!=$_POST['pass2'] || strlen($_POST['pass1']< 5))
+		{
+			if($_POST['pass1']!=$_POST['pass2'])
+			{
+				$error="Mots de passes rentrés différents";
+			}
+			if(strlen($_POST['pass1']< 5))
+			{
+				$error="Mot de passe trop court";
+			}
+			return $error;
 		}
 		else
 		{
-			return "login déjà existant";
-		}
+			if($etat== 0)
+			{ 
+				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
+				$requser = $base->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash')");
+				// return array($login, $password, $email, $firstname, $lastname);
+			}
 
+			else
+			{
+				return "login déjà existant";
+			}
+		}
 }
 
 
 public function connect($login, $password)
 {
-	include('connect.php');
+	include("connect.php");
 	$user = $base->query("SELECT *FROM users WHERE login='$login'");
 	$donnees = $user->fetch();
 		
@@ -41,13 +60,14 @@ public function connect($login, $password)
 		{
 			$this->id=$donnees['id'];
 			$this->login=$login;
-			$this->email=$donnees['email'];
-			$this->firstname=$donnees['firstname'];
-			$this->lastname=$donnees['lastname'];
+			$this->nom=$donnees['nom'];
+			$this->prenom=$donnees['prenom'];
+			$this->mail=$donnees['nom'];
+			$this->password=$donnees['password'];
 		
 			$_SESSION['login']=$login;
 			$_SESSION['password']=$password;
-			return(var_dump($row));
+			// return(var_dump($row));
 		}
 		else
 		{
@@ -64,12 +84,13 @@ public function disconnect()
 
 public function delete()
 {
+	include("connect.php");
 
 	if(isset($_SESSION['login']))
 	{
 		include('connect.php');
 		$login=$_SESSION['login'];
-		$del = $base->query("DELETE FROM users WHERE login='$login'");
+		$del = $base->query("DELETE FROM utilisateurs WHERE login='$login'");
 		session_destroy();
 	}
 
@@ -77,14 +98,14 @@ public function delete()
 
 public function update($login, $password, $email, $firstname,
 $lastname)
-{
+{	
+	include("connect.php");
+
 	if(isset($_SESSION['login']))
 	{
-		
-		include('connect.php');
 		$log=$_SESSION['login'];
 		$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-		$update = $base->query("UPDATE users SET login='$login', password='$hash', email='$email', firstname='$firstname', lastname='$lastname' WHERE login='$log'");
+		$update = $base->query("UPDATE utilisateurs SET login='$login', nom='$nom', prenom='$prenom', email='$email', password='$hash' WHERE login='$log'");
 	}
 }
 
@@ -103,23 +124,20 @@ public function getAllInfos()
 
 public function refresh()
 {
-	include('connect.php');
+	include("connect.php");
+
 	$login=$_SESSION['login'];
-	$queryuser = $base ->query("SELECT *from users WHERE login='$login'");
+	$queryuser = $base ->query("SELECT *from utilisateurs WHERE login='$login'");
 	$donnees = $queryuser->fetch();
 
 	$this->id=$donnees['id'];
 	$this->login=$donnees['login'];
+	$this->nom=$donnees['nom'];
+	$this->prenom=$donnees['prenom'];
 	$this->email=$donnees['email'];
-	$this->firstname=$donnees['firstname'];
-	$this->lastname=$donnees['lastname'];
+	$this->password=$donnees['password'];
 }
 
 }
 
-
-session_start();
-
-
-
-$user = new userpdo;
+// $user = new userpdo;
