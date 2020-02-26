@@ -11,7 +11,7 @@ if(isset($_SESSION['login']))
 if(isset($_POST['signin']))
 {
 	$user = new userpdo;
-	echo $user->register($_POST['login'], $_POST['lastname'],$_POST['firstname'],$_POST['email'],$_POST['pass1']);
+	echo $user->register($_POST['login'], $_POST['lastname'],$_POST['firstname'],$_POST['email'],$_POST['pass1'], $_POST['pass2']);
 }
 ?>
 

@@ -13,25 +13,25 @@ class userpdo
 	public 	$prenom;
 	public 	$email;
 	public 	$password;
+	public 	$password2;
 
 
-public function register($login, $nom, $prenom, $email, $password)
+public function register($login, $nom, $prenom, $email, $password, $password2)
 {
 	include("connect.php");
 	$user = $base->query("SELECT *FROM utilisateurs WHERE login='$login'");
 	$etat = $user->rowCount();
 
-		if($_POST['pass1']!=$_POST['pass2'] || strlen($_POST['pass1']< 5))
+		if($password != $password2 || strlen($password) < 5)
 		{
-			if($_POST['pass1']!=$_POST['pass2'])
+			if($password != $password2)
 			{
-				$error="Mots de passes rentrés différents";
+				$msg="Mots de passes rentrés différents";
 			}
-			if(strlen($_POST['pass1']< 5))
+			if(strlen($password) < 5)
 			{
-				$error="Mot de passe trop court";
+				$msg="Mot de passe trop court";
 			}
-			return $error;
 		}
 		else
 		{
@@ -39,14 +39,15 @@ public function register($login, $nom, $prenom, $email, $password)
 			{ 
 				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
 				$requser = $base->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash')");
-				// return array($login, $password, $email, $firstname, $lastname);
+				$msg="ok";
 			}
-
 			else
 			{
-				return "login déjà existant";
+				$msg="login déjà existant";
 			}
 		}
+
+		return $msg;
 }
 
 
