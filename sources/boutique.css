@@ -1,0 +1,36 @@
+body{
+margin: 0;
+
+
+}
+.navbar{
+  background-image: url("../img/fond_header.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+.navbar li, a, ul{
+  color: white;
+  margin: 0;
+  padding:13px;
+  text-decoration: none;
+  list-style-type:none;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+text-align: center;
+}
+li{
+height: 40px;
+
+}
+ li:hover{
+margin: 1px;
+border-bottom: 3px solid;
+color: #31a0d6;
+height:20px;
+
+
+
+
+
+}

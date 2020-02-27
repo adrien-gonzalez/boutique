@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
+<head>
+  <link rel="stylesheet" href="boutique.css">
+</head>
 <header>
-  <nav>
+  <nav class='navbar'>
         <ul>
 
-  
+
 
             <?php
                 if(isset($_SESSION['login']))
