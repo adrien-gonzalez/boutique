@@ -3,7 +3,6 @@
 session_start();
 
 
-
 class userpdo
 {
 	
@@ -54,7 +53,7 @@ public function register($login, $nom, $prenom, $email, $password, $password2)
 public function connect($login, $password)
 {
 	include("connect.php");
-	$user = $base->query("SELECT *FROM users WHERE login='$login'");
+	$user = $base->query("SELECT *FROM utilisateurs WHERE login='$login'");
 	$donnees = $user->fetch();
 		
 		if(password_verify($password,$donnees['password'])) 
@@ -63,12 +62,11 @@ public function connect($login, $password)
 			$this->login=$login;
 			$this->nom=$donnees['nom'];
 			$this->prenom=$donnees['prenom'];
-			$this->mail=$donnees['nom'];
+			$this->mail=$donnees['email'];
 			$this->password=$donnees['password'];
 		
 			$_SESSION['login']=$login;
-			$_SESSION['password']=$password;
-			// return(var_dump($row));
+			header('location: profil.php');
 		}
 		else
 		{
