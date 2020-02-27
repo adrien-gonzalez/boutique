@@ -11,10 +11,12 @@ if(isset($_SESSION['login']))
 if(isset($_POST['connect']))
 {
 	$user = new userpdo;
-	echo $user->connect($_POST['login'], $_POST['password']);
-	
+	$user->connect($_POST['login'], $_POST['password']);
+	if(($user->connect($_POST['login'], $_POST['password']))=="ok" )
+	{
+		header('location: profil.php');
+	}
 }
-
 
 ?>
 

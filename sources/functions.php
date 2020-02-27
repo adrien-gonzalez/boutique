@@ -62,17 +62,19 @@ public function connect($login, $password)
 			$this->login=$login;
 			$this->nom=$donnees['nom'];
 			$this->prenom=$donnees['prenom'];
-			$this->mail=$donnees['email'];
+			$this->email=$donnees['email'];
 			$this->password=$donnees['password'];
 		
 			$_SESSION['login']=$login;
-			header('location: profil.php');
+			$_SESSION['password']=$password;
+			$msg="ok";
 		}
 		else
 		{
-			return "Login ou mot de passe incorrect";	
+			$msg="Login ou mot de passe incorrect";	
 		}
 
+		return $msg;
 }
 
 public function disconnect()
@@ -95,8 +97,7 @@ public function delete()
 
 }
 
-public function update($login, $password, $email, $firstname,
-$lastname)
+public function update($login, $nom, $prenom, $email,$password)
 {	
 	include("connect.php");
 
@@ -105,6 +106,17 @@ $lastname)
 		$log=$_SESSION['login'];
 		$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 		$update = $base->query("UPDATE utilisateurs SET login='$login', nom='$nom', prenom='$prenom', email='$email', password='$hash' WHERE login='$log'");
+
+		$this->login=$login;
+		$this->nom=$nom;
+		$this->prenom=$prenom;
+		$this->email=$email;
+		$this->password=$password;
+
+		unset($_SESSION['login']);
+		unset($_SESSION['password']);
+		header('location: connexion.php');
+
 	}
 }
 
@@ -112,7 +124,13 @@ public function getAllInfos()
 {
 	if(isset($_SESSION['login']))
 	{
-        return($this);
+		
+		$tab=array($this->login,
+		$this->nom,
+		$this->prenom,
+		$this->email,
+		$this->password);
+		return $tab;
     }
     else
     {
@@ -135,8 +153,7 @@ public function refresh()
 	$this->prenom=$donnees['prenom'];
 	$this->email=$donnees['email'];
 	$this->password=$donnees['password'];
-}
 
 }
 
-// $user = new userpdo;
+}

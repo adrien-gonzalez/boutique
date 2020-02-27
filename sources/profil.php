@@ -12,11 +12,14 @@ if(!isset($_SESSION['login']))
 if(isset($_POST['update']))
 {
 	$user = new userpdo;
-	echo $user->getAllInfos();
+	$user->update($_POST['login'], $_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['pass']);
+	
 }
 
 $user = new userpdo;
-$user->getAllInfos();
+$user->refresh();
+$user->connect($_SESSION['login'], $_SESSION['password']);
+$tab=$user->getAllInfos();
 
 
 ?>
@@ -30,13 +33,11 @@ $user->getAllInfos();
 	</head>	
 	<body>
 		<form action="" method="post">
-			<input type="text" name="login" required placeholder="Login" value="">
-			<input type="text" name="lastname" required placeholder="Nom">
-			<input type="text" name="firstname" required placeholder="Prénom">
-			<input type="email" name="email" required placeholder="Email">
-			<input type="password" name="pass" required placeholder="Ancien mot de passe">
-			<input type="password" name="pass1" required placeholder="Nouveau mot de passe">
-			<input type="password" name="pass2" required placeholder="Confirmer le nouveau mot de passe">
+			<input type="text" name="login" required placeholder="Login" value="<?php echo $tab[0]; ?>">
+			<input type="text" name="lastname" required placeholder="Nom" value="<?php echo $tab[1]; ?>">
+			<input type="text" name="firstname" required placeholder="Prénom" value="<?php echo $tab[2]; ?>">
+			<input type="email" name="email" required placeholder="Email" value="<?php echo $tab[3]; ?>">
+			<input type="password" name="pass" required placeholder="Mot de passe" value="<?php echo $_SESSION['password'];?>">
 			<input type="submit" name="update" required value="Modifier">
 		</form>
 	</body>
