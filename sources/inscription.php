@@ -1,7 +1,9 @@
 
-<!-- ------- PARTIE PHP - FONCTION REGISTER ------- -->
+<!--- PARTIE PHP - FONCTION REGISTER - -->
 
-<?php include("functions.php"); 
+<?php
+include("functions.php");
+
 
 if(isset($_SESSION['login']))
 {
@@ -15,14 +17,15 @@ if(isset($_POST['signin']))
 }
 ?>
 
-<!-- ---------------------------------------------- -->
-<!-- ---------- FORMULAIRE HTML-------------------- -->
+<!--  -->
+<!-- FORMULAIRE HTML-->
 
 <html>
 	<head>
 		<link href="boutique.css" rel="stylesheet">
-	</head>	
+	</head>
 	<body>
+		<?php include("header.php"); ?>
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
 			<input type="text" name="lastname" required placeholder="Nom">
@@ -35,4 +38,4 @@ if(isset($_POST['signin']))
 	</body>
 </html>
 
-<!-- --------------------------------------------- -->
+<!-- - -->

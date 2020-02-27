@@ -1,7 +1,8 @@
-<!-- ------- PARTIE PHP - FONCTION REGISTER ------- -->
+<!--- PARTIE PHP - FONCTION REGISTER - -->
 
-<?php include("functions.php"); 
-
+<?php
+include("functions.php");
+include("header.php");
 
 if(isset($_SESSION['login']))
 {
@@ -12,19 +13,19 @@ if(isset($_POST['connect']))
 {
 	$user = new userpdo;
 	echo $user->connect($_POST['login'], $_POST['password']);
-	
+
 }
 
 
 ?>
 
-<!-- ---------------------------------------------- -->
-<!-- ---------- FORMULAIRE HTML-------------------- -->
+<!--  -->
+<!--  FORMULAIRE HTML -->
 
 <html>
 	<head>
 		<link href="boutique.css" rel="stylesheet">
-	</head>	
+	</head>
 	<body>
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
@@ -34,4 +35,4 @@ if(isset($_POST['connect']))
 	</body>
 </html>
 
-<!-- --------------------------------------------- -->
+<!--- -->
