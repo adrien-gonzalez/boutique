@@ -5,7 +5,7 @@ session_start();
 
 class userpdo
 {
-	
+
 	private $id;
 	public 	$login;
 	public 	$nom;
@@ -35,8 +35,8 @@ public function register($login, $nom, $prenom, $email, $password, $password2)
 		else
 		{
 			if($etat== 0)
-			{ 
-				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
+			{
+				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 				$requser = $base->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash')");
 				$msg="ok";
 			}
@@ -55,8 +55,8 @@ public function connect($login, $password)
 	include("connect.php");
 	$user = $base->query("SELECT *FROM utilisateurs WHERE login='$login'");
 	$donnees = $user->fetch();
-		
-		if(password_verify($password,$donnees['password'])) 
+
+		if(password_verify($password,$donnees['password']))
 		{
 			$this->id=$donnees['id'];
 			$this->login=$login;
@@ -64,13 +64,13 @@ public function connect($login, $password)
 			$this->prenom=$donnees['prenom'];
 			$this->mail=$donnees['email'];
 			$this->password=$donnees['password'];
-		
+
 			$_SESSION['login']=$login;
-			header('location: profil.php');
+			header('location: index.php');
 		}
 		else
 		{
-			return "Login ou mot de passe incorrect";	
+			return "Login ou mot de passe incorrect";
 		}
 
 }
@@ -97,7 +97,7 @@ public function delete()
 
 public function update($login, $password, $email, $firstname,
 $lastname)
-{	
+{
 	include("connect.php");
 
 	if(isset($_SESSION['login']))
