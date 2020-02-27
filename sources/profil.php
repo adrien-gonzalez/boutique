@@ -44,3 +44,5 @@ $tab=$user->getAllInfos();
 </html>
 
 <!-- --------------------------------------------- -->
+
+<?php include("footer.php");?>

@@ -1,0 +1,123 @@
+
+
+*{
+padding: 0;
+margin: 0;
+outline: none;
+}
+
+footer{
+display:flex;
+justify-content: space-between;
+width: 100%;
+background-color: #F1C232;
+position: absolute;
+bottom: 0;
+height: 180px;
+
+}
+
+footer .footer{
+	display:flex;
+	flex-direction: column;
+	flex:2;
+	justify-content: flex-end;
+	align-items: center
+
+}
+
+footer #mentions{
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	width: 280px;
+}
+
+footer #mentions div{
+
+display:flex;
+width: 280px;
+justify-content: space-between;
+margin-bottom: 10px;
+}
+
+footer .categorie{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+
+footer .categorie h3{
+   /*style titre*/
+}
+
+footer .categorie a{
+
+	text-decoration: none;
+	color:black;
+}
+
+footer .categorie a:hover{
+
+	text-decoration: underline;
+}
+
+footer .categorie .titre{
+
+display:flex;
+flex-direction: column;
+justify-content: space-between;
+height: 50%;
+margin-top: 30%;
+
+}
+
+
+footer .map{
+background-image:url(../img/map.png); 
+background-repeat: no-repeat;
+height: 80%;
+ transition: 0.8s;
+}
+
+
+footer .map:hover{
+
+background-image:url(../img/map2.png); 
+}
+
+
+
+
+input[type="submit"]{
+	cursor:pointer;
+}
+
+.mail{
+
+border:none;
+width:200px;
+height:50px;
+color:#fff;
+font-weight:700;
+border-radius:.25rem;
+text-transform:uppercase!important;
+background-color:#1C2833 
+}
+
+.mail:hover{
+
+background-color:black;
+cursor:pointer;
+}
+
+.contact{
+
+display: flex;
+width: 100%;
+justify-content: center;
+margin-top: 10%;
+}
+

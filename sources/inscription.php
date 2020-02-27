@@ -14,6 +14,7 @@ if(isset($_POST['signin']))
 	$user = new userpdo;
 	echo $user->register($_POST['login'], $_POST['lastname'],$_POST['firstname'],$_POST['email'],$_POST['pass1'], $_POST['pass2']);
 }
+
 ?>
 
 <!-- ---------------------------------------------- -->
@@ -33,6 +34,8 @@ if(isset($_POST['signin']))
 			<input type="password" name="pass2" required placeholder="Confirmer votre mot de passe">
 			<input type="submit" name="signin" required value="S'inscrire">
 		</form>
+
+<?php include("footer.php");?>
 	</body>
 </html>
 

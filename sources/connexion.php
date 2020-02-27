@@ -33,6 +33,9 @@ if(isset($_POST['connect']))
 			<input type="password" name="password" required placeholder="Password">
 			<input type="submit" name="connect" required value="Connexion">
 		</form>
+
+<?php include("footer.php");?>
+
 	</body>
 </html>
 
