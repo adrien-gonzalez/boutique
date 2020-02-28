@@ -64,7 +64,7 @@
       <a href="profil.php"><img src="../img/logo_profil.png" height="40px" ></a>  
   </li>
   <li>
-      <a href="profil.php"><img src="../img/logo.png" height="50px" ></a>      
+      <a href="index.php"><img src="../img/logo.png" height="50px" ></a>      
   </li>
    <li>
       <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
@@ -128,13 +128,13 @@ else
       <a href="contact.php">Contactez-nous</a>  
   </li>
   <li>
-      <a href="profil.php"><img src="../img/logo.png" height="50px" ></a>      
+      <a href="index.php"><img src="../img/logo.png" height="50px" ></a>      
   </li>
    <li>
       <a href="inscription.php">Inscription</a>
   </li>
   <li>
-      <a href="Connexion.php">Connexion</a>
+      <a href="connexion.php">Connexion</a>
   </li>
 <?php
 }
