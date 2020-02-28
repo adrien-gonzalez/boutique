@@ -1,21 +1,35 @@
-
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
 
 *{
 padding: 0;
 margin: 0;
 outline: none;
+font-family: 'Concert One' ;
+
 }
 
 footer{
 display:flex;
 justify-content: space-between;
 width: 100%;
-background-color: #F1C232;
+background-color: #F5B041 ;
 position: absolute;
 bottom: 0;
 height: 180px;
 
+
 }
+
+footer,p, h3, .categorie a, a{
+
+color:white;
+text-decoration: none;
+}
+
+footer a:hover{
+	color:#2C3E50;
+}
+
 
 footer .footer{
 	display:flex;
@@ -31,7 +45,8 @@ footer #mentions{
 	flex-direction: column;
 	justify-content: space-between;
 	margin-bottom: 10px;
-	width: 280px;
+	width: 290px;
+	
 }
 
 footer #mentions div{
@@ -40,29 +55,21 @@ display:flex;
 width: 280px;
 justify-content: space-between;
 margin-bottom: 10px;
+
 }
 
 footer .categorie{
 	display:flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: center
 
 }
 
 footer .categorie h3{
-   /*style titre*/
+   text-decoration: underline;
+   color:;
 }
 
-footer .categorie a{
-
-	text-decoration: none;
-	color:black;
-}
-
-footer .categorie a:hover{
-
-	text-decoration: underline;
-}
 
 footer .categorie .titre{
 
@@ -71,6 +78,7 @@ flex-direction: column;
 justify-content: space-between;
 height: 50%;
 margin-top: 30%;
+
 
 }
 
@@ -120,4 +128,100 @@ width: 100%;
 justify-content: center;
 margin-top: 10%;
 }
+
+
+nav a{
+
+color: white;
+margin: 0;
+padding:13px;
+text-decoration: none;
+list-style-type:none;
+display: flex;
+flex-direction:row;
+justify-content: space-around;
+text-align: center;
+
+}
+
+nav {
+  width: 100%;
+  text-align: center;
+  padding:0;
+  margin:0;
+
+  
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; 
+
+}
+
+li {
+  margin: 0;
+  background-color: #2C3E50 ;
+  
+}
+
+.menu , .lien {
+  display: block;
+  padding: 10px 0;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position:relative;
+   z-index:2;
+
+}
+
+
+.menu:hover,
+.menu:focus {
+  background: #212F3D ;
+}
+
+nav > ul {
+  display: table;
+  width: 100%;
+
+}
+nav > ul > li {
+  display: table-cell;
+  width: 16%;
+  
+}
+nav > ul li {
+  position: relative;
+}
+nav li ul {
+  display: none;
+  position: absolute;
+
+}
+nav > ul > li > ul {
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+nav > ul > li li > ul {
+  top: 0;
+  left: 100%;
+}
+nav li:hover > ul {
+  display: block;
+}
+nav > ul > li > ul .menu {
+  text-align: left;
+  padding: 10px;
+}
+
+
+ li a:hover{
+background: #212F3D ;
+}
+
 

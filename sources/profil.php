@@ -6,7 +6,7 @@
 
 if(!isset($_SESSION['login']))
 {
-	header('location: ../index.php');
+	header('location: index.php');
 }
 
 if(isset($_POST['update']))
@@ -31,7 +31,9 @@ $tab=$user->getAllInfos();
 	<head>
 		<link href="boutique.css" rel="stylesheet">
 	</head>	
+
 	<body>
+		<?php include("header.php");?>
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login" value="<?php echo $tab[0]; ?>">
 			<input type="text" name="lastname" required placeholder="Nom" value="<?php echo $tab[1]; ?>">
@@ -40,9 +42,9 @@ $tab=$user->getAllInfos();
 			<input type="password" name="pass" required placeholder="Mot de passe" value="<?php echo $_SESSION['password'];?>">
 			<input type="submit" name="update" required value="Modifier">
 		</form>
+		<?php include("footer.php");?>
 	</body>
 </html>
 
 <!-- --------------------------------------------- -->
 
-<?php include("footer.php");?>
