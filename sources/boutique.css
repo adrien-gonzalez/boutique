@@ -247,6 +247,24 @@ color: #F5B041 ;
   width: 200px;
 }
 
+.logoprofilhover{
+  height: 35px;
+  background-image:url(../img/logo_profil.png);
+  background-size: 35px;
+  width: 35px;
+  transition: 0.2s;
+}
+
+.logoprofilhover:hover{
+  height: 35px;
+  background-image:url(../img/logo_profilhover.png);
+  background-size: 35px;
+  width: 35px;
+  transition: 0.2s;
+}
+
+
+
 
 .sous_categorie{
 

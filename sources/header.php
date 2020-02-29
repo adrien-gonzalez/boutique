@@ -60,9 +60,17 @@
         </li>
       </ul>
     </li>
-  <li>
-      <a href="profil.php"><img src="../img/logo_profil.png" height="40px" ></a>  
-  </li>
+    <li>
+      <a href=""><div class="logoprofilhover"></div></a>  
+        <ul>
+          <li>
+            <a class="menu" href="profil.php">Mon profil</a>
+          </li>
+          <li>
+            <a class="menu" href="commandes.php">Mes commandes</a>
+          </li>  
+          </ul>
+   </li>
   <li>
       <a href="index.php"><div class="logohover"></div></a>      
   </li>
