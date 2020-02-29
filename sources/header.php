@@ -14,7 +14,7 @@
 ?>
 
   <li>
-      <a class="menu" href="#">Catégorie</a>
+      <a class="menu" href="">Catégorie</a>
       <ul>
         <li>
           <a class="menu" href="sous-categorie?type=gamer">PC Gamer</a>
@@ -64,7 +64,7 @@
       <a href="profil.php"><img src="../img/logo_profil.png" height="40px" ></a>  
   </li>
   <li>
-      <a href="index.php"><img src="../img/logo.png" height="50px" ></a>      
+      <a href="index.php"><div class="logohover"></div></a>      
   </li>
    <li>
       <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
@@ -81,7 +81,7 @@ else
       <a class="menu" href="#">Catégorie</a>
       <ul>
         <li>
-          <a class="menu" href="#sous-categorie?type=gamer">PC Gamer</a>
+          <a class="menu" href="sous-categorie?type=gamer">PC Gamer</a>
           <ul>
             <li>
               <a class="menu" href="produit.php?type=gamer?marque=hp">HP</a>
@@ -128,7 +128,7 @@ else
       <a href="contact.php">Contactez-nous</a>  
   </li>
   <li>
-      <a href="index.php"><img src="../img/logo.png" height="50px" ></a>      
+       <a href="index.php"><div class="logohover"></div></a>      
   </li>
    <li>
       <a href="inscription.php">Inscription</a>

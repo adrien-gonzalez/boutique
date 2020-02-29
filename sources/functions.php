@@ -3,6 +3,9 @@
 session_start();
 
 
+
+// PARTIE UTILISATEURS
+
 class userpdo
 {
 	
@@ -13,6 +16,7 @@ class userpdo
 	public 	$email;
 	public 	$password;
 	public 	$password2;
+	
 
 
 public function register($login, $nom, $prenom, $email, $password, $password2)
@@ -154,6 +158,46 @@ public function refresh()
 	$this->email=$donnees['email'];
 	$this->password=$donnees['password'];
 
+}
+
+
+
+}
+
+
+
+
+
+// PARTIE PRODUITS
+
+
+
+class produit
+{
+
+	public 	$tab;
+
+	public function sous_categorie()
+	{
+	include("connect.php");
+
+	$tab=[];
+	$sous_categorie=$base ->query("SELECT *from images");
+	
+
+	while($images = $sous_categorie->fetch())
+	{
+		array_push($tab, $images);
+	}
+
+	$this->tab=$tab;
+	return $tab;
+
+}
+
+public function taille()
+{
+	return(sizeof($this->tab));
 }
 
 }
