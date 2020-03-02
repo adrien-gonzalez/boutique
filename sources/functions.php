@@ -231,24 +231,4 @@ class produit
 	return $tabimages;
 
 	}
-
-
-
-// PARTIE PANIER
-
-public function panier_affichage()
-
-	{
-		include("connect.php");
-
-			$panier=[];
-			$panier_affichage=$base ->query("SELECT * FROM `commandes`");
-
-
-
-		for($i=0; $i < sizeof($produit -> images()); $i++)
-{
-	echo "ok";
-	}
-}
 }
