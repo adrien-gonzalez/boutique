@@ -1,31 +1,35 @@
 
-<!--- PARTIE PHP - FONCTION REGISTER - -->
+<!-- ------- PARTIE PHP - FONCTION REGISTER ------- -->
 
-<?php
-include("functions.php");
+<?php include("functions.php"); 
 
 
 if(isset($_SESSION['login']))
 {
-	header('location: ../index.php');
+	header('location: index.php');
 }
 
 if(isset($_POST['signin']))
 {
 	$user = new userpdo;
-	echo $user->register($_POST['login'], $_POST['lastname'],$_POST['firstname'],$_POST['email'],$_POST['pass1'], $_POST['pass2']);
+	if($user->register($_POST['login'], $_POST['lastname'],$_POST['firstname'],$_POST['email'],$_POST['pass1'], $_POST['pass2'])=="ok");
+	{
+		header('location: index.php');
+	}
 }
+
 ?>
 
-<!--  -->
-<!-- FORMULAIRE HTML-->
+<!-- ---------------------------------------------- -->
+<!-- ---------- FORMULAIRE HTML-------------------- -->
 
 <html>
 	<head>
 		<link href="boutique.css" rel="stylesheet">
-	</head>
+	</head>	
 	<body>
-		<?php include("header.php"); ?>
+
+		<?php include("header.php");?>
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
 			<input type="text" name="lastname" required placeholder="Nom">
@@ -35,7 +39,9 @@ if(isset($_POST['signin']))
 			<input type="password" name="pass2" required placeholder="Confirmer votre mot de passe">
 			<input type="submit" name="signin" required value="S'inscrire">
 		</form>
+
+<?php include("footer.php");?>
 	</body>
 </html>
 
-<!-- - -->
+<!-- --------------------------------------------- -->

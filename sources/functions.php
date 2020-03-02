@@ -3,9 +3,12 @@
 session_start();
 
 
+
+// PARTIE UTILISATEURS
+
 class userpdo
 {
-
+	
 	private $id;
 	public 	$login;
 	public 	$nom;
@@ -13,6 +16,7 @@ class userpdo
 	public 	$email;
 	public 	$password;
 	public 	$password2;
+	
 
 
 public function register($login, $nom, $prenom, $email, $password, $password2)
@@ -35,8 +39,8 @@ public function register($login, $nom, $prenom, $email, $password, $password2)
 		else
 		{
 			if($etat== 0)
-			{
-				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+			{ 
+				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
 				$requser = $base->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash')");
 				$msg="ok";
 			}
@@ -55,30 +59,33 @@ public function connect($login, $password)
 	include("connect.php");
 	$user = $base->query("SELECT *FROM utilisateurs WHERE login='$login'");
 	$donnees = $user->fetch();
-
-		if(password_verify($password,$donnees['password']))
+		
+		if(password_verify($password,$donnees['password'])) 
 		{
 			$this->id=$donnees['id'];
 			$this->login=$login;
 			$this->nom=$donnees['nom'];
 			$this->prenom=$donnees['prenom'];
-			$this->mail=$donnees['email'];
+			$this->email=$donnees['email'];
 			$this->password=$donnees['password'];
-
+		
 			$_SESSION['login']=$login;
-			header('location: index.php');
+			$_SESSION['password']=$password;
+			$msg="ok";
 		}
 		else
 		{
-			return "Login ou mot de passe incorrect";
+			$msg="Login ou mot de passe incorrect";	
 		}
 
+		return $msg;
 }
 
 public function disconnect()
 {
+	unset($_SESSION['login']);
+	unset($_SESSION['password']);
 	session_destroy();
-	return "Vous êtes bien déconnecté";
 }
 
 public function delete()
@@ -95,9 +102,8 @@ public function delete()
 
 }
 
-public function update($login, $password, $email, $firstname,
-$lastname)
-{
+public function update($login, $nom, $prenom, $email,$password)
+{	
 	include("connect.php");
 
 	if(isset($_SESSION['login']))
@@ -105,6 +111,17 @@ $lastname)
 		$log=$_SESSION['login'];
 		$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 		$update = $base->query("UPDATE utilisateurs SET login='$login', nom='$nom', prenom='$prenom', email='$email', password='$hash' WHERE login='$log'");
+
+		$this->login=$login;
+		$this->nom=$nom;
+		$this->prenom=$prenom;
+		$this->email=$email;
+		$this->password=$password;
+
+		unset($_SESSION['login']);
+		unset($_SESSION['password']);
+		header('location: connexion.php');
+
 	}
 }
 
@@ -112,7 +129,13 @@ public function getAllInfos()
 {
 	if(isset($_SESSION['login']))
 	{
-        return($this);
+		
+		$tab=array($this->login,
+		$this->nom,
+		$this->prenom,
+		$this->email,
+		$this->password);
+		return $tab;
     }
     else
     {
@@ -135,8 +158,47 @@ public function refresh()
 	$this->prenom=$donnees['prenom'];
 	$this->email=$donnees['email'];
 	$this->password=$donnees['password'];
-}
 
 }
 
-// $user = new userpdo;
+
+
+}
+
+
+
+
+
+// PARTIE PRODUITS
+
+
+
+class produit
+{
+
+	public 	$tab;
+
+	public function sous_categorie()
+	{
+	include("connect.php");
+
+	$tab=[];
+	$sous_categorie=$base ->query("SELECT *from images");
+	
+
+	while($images = $sous_categorie->fetch())
+	{
+		array_push($tab, $images);
+	}
+
+	$this->tab=$tab;
+	return $tab;
+
+}
+
+public function taille()
+{
+	return(sizeof($this->tab));
+}
+
+}

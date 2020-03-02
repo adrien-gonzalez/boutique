@@ -1,38 +1,41 @@
-<!--- PARTIE PHP - FONCTION REGISTER - -->
+<!-- ------- PARTIE PHP - FONCTION REGISTER ------- -->
 
-<?php
-include("functions.php");
-include("header.php");
+<?php include("functions.php"); 
+
 
 if(isset($_SESSION['login']))
 {
-	header('location: ../index.php');
+	header('location: index.php');
 }
 
 if(isset($_POST['connect']))
 {
 	$user = new userpdo;
-	echo $user->connect($_POST['login'], $_POST['password']);
-
+	$user->connect($_POST['login'], $_POST['password']);
+	if(($user->connect($_POST['login'], $_POST['password']))=="ok" )
+	{
+		header('location: index.php');
+	}
 }
-
 
 ?>
 
-<!--  -->
-<!--  FORMULAIRE HTML -->
+<!-- ---------------------------------------------- -->
+<!-- ---------- FORMULAIRE HTML-------------------- -->
 
 <html>
 	<head>
 		<link href="boutique.css" rel="stylesheet">
-	</head>
+	</head>	
 	<body>
+		<?php include("header.php");?>
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
 			<input type="password" name="password" required placeholder="Password">
 			<input type="submit" name="connect" required value="Connexion">
 		</form>
+		<?php include("footer.php");?>
 	</body>
 </html>
 
-<!--- -->
+<!-- --------------------------------------------- -->

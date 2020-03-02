@@ -1,8 +1,8 @@
 <html>
 
 <head>
-	<title>Accueil de boutique</title>
-	<link href="sources/forum.css" rel="stylesheet">
+	<title>Accueil de la boutique</title>
+	<link href="boutique.css" rel="stylesheet">
 	<meta charset="UTF-8">
 
 
@@ -12,9 +12,11 @@
 
 <?php
 
-	session_start();
-include('header.php');
-	$base = mysqli_connect("localhost", "root", "", "boutique");
-	mysqli_set_charset($base, "utf8");
+include("functions.php");
+include("header.php");
+include("footer.php");
 
-  ?>
+
+ ?>
+ </body>
+</html>

@@ -3,32 +3,163 @@
 <head>
   <link rel="stylesheet" href="boutique.css">
 </head>
+
 <header>
-  <nav class='navbar'>
+
+<nav>
+  <ul>
+   
+<?php if(isset($_POST['deco']))
+{
+  $user = new userpdo;
+  $user->disconnect();
+
+} 
+?>
+
+<?php if(isset($_SESSION['login']))
+{
+?>
+
+  <li>
+      <a class="menu" href="">Catégorie</a>
+      <ul>
+        <li>
+          <a class="menu" href="sous-categorie?type=gamer">PC Gamer</a>
+          <ul>
+            <li>
+              <a class="menu" href="produit.php?type=gamer?marque=hp">HP</a>
+            </li>
+            <li>
+              <a class="menu" href="produit.php?type=gamer?marque=asus">Asus</a>
+            </li>
+             <li>
+              <a class="menu" href="produit.php?type=gamer?marque=msi">MSI</a>
+            </li>
+          </ul>
+        </li>
+     <li>
+          <a class="menu" href="sous-categorie?type=bureautique">PC Bureautique</a>
+          <ul>
+            <li>
+              <a class="menu" href="produit.php?type=bureautique?marque=hp">HP</a>
+            </li>
+            <li>
+              <a class="menu" href="produit.php?type=bureautique?marque=asus">Asus</a>
+            </li>
+             <li>
+              <a class="menu" href="produit.php?type=bureautique?marque=msi">MSI</a>
+            </li>
+          </ul>
+        </li>
+     <li>
+          <a class="menu" href="sous-categorie?type=multimedia">PC Multimédia</a>
+          <ul>
+           <li>
+              <a class="menu" href="produit.php?type=multimedia?marque=hp">HP</a>
+            </li>
+            <li>
+              <a class="menu" href="produit.php?type=multimedia?marque=asus">Asus</a>
+            </li>
+             <li>
+              <a class="menu" href="produit.php?type=multimedia?marque=msi">MSI</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href=""><div class="logoprofilhover"></div></a>  
         <ul>
+          <li>
+            <a class="menu" href="profil.php">Mon profil</a>
+          </li>
+          <li>
+            <a class="menu" href="commandes.php">Mes commandes</a>
+          </li>  
+          </ul>
+   </li>
+  <li>
+      <a href="index.php"><div class="logohover"></div></a>      
+  </li>
+   <li>
+      <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
+  </li>
+  <li>
+      <form class="disconnect" method="post" action="" >
+        <input name="deco" type="submit" value="Déconnexion">
+      </form>
+  </li>
+<?php 
+}
+else
+{
+?>
+   <li>
+      <a class="menu" href="#">Catégorie</a>
+      <ul>
+        <li>
+          <a class="menu" href="sous-categorie?type=gamer">PC Gamer</a>
+          <ul>
+            <li>
+              <a class="menu" href="produit.php?type=gamer?marque=hp">HP</a>
+            </li>
+            <li>
+              <a class="menu" href="produit.php?type=gamer?marque=asus">Asus</a>
+            </li>
+             <li>
+              <a class="menu" href="produit.php?type=gamer?marque=msi">MSI</a>
+            </li>
+          </ul>
+        </li>
+     <li>
+          <a class="menu" href="sous-categorie?type=bureautique">PC Bureautique</a>
+          <ul>
+            <li>
+              <a class="menu" href="produit.php?type=bureautique?marque=hp">HP</a>
+            </li>
+            <li>
+              <a class="menu" href="produit.php?type=bureautique?marque=asus">Asus</a>
+            </li>
+             <li>
+              <a class="menu" href="produit.php?type=bureautique?marque=msi">MSI</a>
+            </li>
+          </ul>
+        </li>
+     <li>
+          <a class="menu" href="sous-categorie?type=multimedia">PC Multimédia</a>
+          <ul>
+           <li>
+              <a class="menu" href="produit.php?type=multimedia?marque=hp">HP</a>
+            </li>
+            <li>
+              <a class="menu" href="produit.php?type=multimedia?marque=asus">Asus</a>
+            </li>
+             <li>
+              <a class="menu" href="produit.php?type=multimedia?marque=msi">MSI</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  <li>
+      <a href="contact.php">Contactez-nous</a>  
+  </li>
+  <li>
+       <a href="index.php"><div class="logohover"></div></a>      
+  </li>
+   <li>
+      <a href="inscription.php">Inscription</a>
+  </li>
+  <li>
+      <a href="connexion.php">Connexion</a>
+  </li>
+<?php
+}
+?>
+</ul>
 
-
-
-            <?php
-                if(isset($_SESSION['login']))
-              {/*conecté*/?>
-                  <li><a href="index.php">Accueil</a></li>
-                  <li><a href="profil.php">Catégories</a></li>
-                  <a href="profil.php"><img src="../img/logo_profil.png" height="40px" ></a>
-                  <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
-                  <li><a href="deconnexion.php">Déconnexion</a></li>
-              <?php
-              }
-              else
-              { /*pas connecter */ ?>
-                  <li><a href="inscription.php">Inscription</a></li>
-                  <li><a href="profil.php">Catégories</a></li>
-                  <li><a href="connexion.php">Connexion</a></li>
-              <?php
-              }
-              ?>
-        </ul>
-  </nav>
+</nav>
 </header>
 
 </html>
