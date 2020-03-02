@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 26 fév. 2020 à 13:55
+-- Généré le :  lun. 02 mars 2020 à 08:51
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -35,7 +35,16 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT DELAYED INTO `categorie` (`id`, `nom`) VALUES
+(1, 'Gamer'),
+(2, 'Bureautique'),
+(3, 'Multimédia');
 
 -- --------------------------------------------------------
 
@@ -74,12 +83,24 @@ CREATE TABLE IF NOT EXISTS `grade` (
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_produit` int(11) NOT NULL,
-  `nom_produit` varchar(255) NOT NULL,
-  `id_categorie` int(11) NOT NULL,
-  `id_sous_categorie` int(11) NOT NULL,
+  `id_produit` int(11) DEFAULT NULL,
+  `nom` varchar(255) NOT NULL,
+  `chemin` varchar(255) DEFAULT NULL,
+  `id_categorie` int(11) DEFAULT NULL,
+  `id_sous_categorie` int(11) DEFAULT NULL,
+  `hauteur` int(11) NOT NULL,
+  `largeur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `images`
+--
+
+INSERT DELAYED INTO `images` (`id`, `id_produit`, `nom`, `chemin`, `id_categorie`, `id_sous_categorie`, `hauteur`, `largeur`) VALUES
+(1, NULL, 'hp', '../img/hp.jpg', NULL, 1, 200, 200),
+(2, NULL, 'asus', '../img/asus.jpg', NULL, 2, 200, 200),
+(3, NULL, 'msi', '../img/msi.jpg', NULL, 3, 200, 200);
 
 -- --------------------------------------------------------
 
@@ -109,7 +130,16 @@ CREATE TABLE IF NOT EXISTS `sous-categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `sous-categorie`
+--
+
+INSERT DELAYED INTO `sous-categorie` (`id`, `nom`) VALUES
+(1, 'HP'),
+(2, 'Asus'),
+(3, 'MSI');
 
 -- --------------------------------------------------------
 
@@ -126,7 +156,14 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `utilisateurs`
+--
+
+INSERT DELAYED INTO `utilisateurs` (`id`, `login`, `nom`, `prenom`, `email`, `password`) VALUES
+(12, 'Firefou', 'Gonzalez', 'Adrien', 'adrien1361@hotmail.fr', '$2y$12$R9bvoYGcnfMF49LCUuzD1.0DdvWkNRapF5HgecrmRhz0Ec0gYHHWO');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
