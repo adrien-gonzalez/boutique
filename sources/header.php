@@ -33,18 +33,20 @@
               $produit -> categorie();
               $produit -> sous_categorie();
 
+
+
               for($j=0; $j < sizeof($produit -> categorie()); $j++)
               {
               ?>
               <li>
-              <a class="menu" href="sous-categorie.php?type=<?php echo $produit -> categorie()[$j][2];?>"> <?php echo $produit -> categorie()[$j][1];?></a>
+              <a class="menu" href="sous-categorie.php?type=<?php echo $produit -> categorie()[$j][2];?>&id=<?php  echo $produit -> categorie()[$j][0];?>"> <?php echo $produit -> categorie()[$j][1];?></a>
               <ul>
               <?php 
               for($i=0; $i < sizeof($produit -> categorie()); $i++)
               {
               ?>
               <li>
-              <a class="menu" href="produits.php?type=<?php echo $produit -> categorie()[$j][2];?>?marque=<?php echo $produit -> sous_categorie()[$i][1];?>"> <?php echo $produit -> sous_categorie()[$i][1];?></a>
+              <a class="menu" href="produits.php?type=<?php echo $produit -> categorie()[$j][2];?>&id=<?php echo $produit -> categorie()[$j][0];?>&marque=<?php  echo $produit -> sous_categorie()[$i][1];?>&id2=<?php echo $produit -> sous_categorie()[$i][0];?>"> <?php echo $produit -> sous_categorie()[$i][1];?></a>
               </li>
               <?php
               }
@@ -92,18 +94,18 @@ else
               $produit -> categorie();
               $produit -> sous_categorie();
 
-              for($j=0; $j < $produit -> taille(); $j++)
+              for($j=0; $j < sizeof($produit -> categorie()); $j++)
               {
               ?>
               <li>
-              <a class="menu" href="sous-categorie.php?type=<?php echo $produit -> categorie()[$j][2];?>"> <?php echo $produit -> categorie()[$j][1];?></a>
+              <a class="menu" href="sous-categorie.php?type=<?php echo $produit -> categorie()[$j][2];?>&id=<?php  echo $produit -> categorie()[$j][0];?>"> <?php echo $produit -> categorie()[$j][1];?></a>
               <ul>
               <?php 
-              for($i=0; $i < $produit -> taille(); $i++)
+              for($i=0; $i < sizeof($produit -> categorie()); $i++)
               {
               ?>
               <li>
-              <a class="menu" href="produits.php?type=<?php echo $produit -> categorie()[$j][2];?>?marque=<?php echo $produit -> sous_categorie()[$i][1];?>"> <?php echo $produit -> sous_categorie()[$i][1];?></a>
+              <a class="menu" href="produits.php?type=<?php echo $produit -> categorie()[$j][2];?>&id=<?php echo $produit -> categorie()[$j][0];?>&marque=<?php  echo $produit -> sous_categorie()[$i][1];?>&id2=<?php echo $produit -> sous_categorie()[$i][0];?>"> <?php echo $produit -> sous_categorie()[$i][1];?></a>
               </li>
               <?php
               }

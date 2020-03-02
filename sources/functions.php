@@ -201,7 +201,7 @@ class produit
 	include("connect.php");
 
 	$tabsouscategorie=[];
-	$sous_categorie=$base ->query("SELECT * FROM `sous-categorie`");
+	$sous_categorie=$base ->query("SELECT * FROM sous_categorie");
 	
 
 	while($images = $sous_categorie->fetch())
@@ -219,7 +219,7 @@ class produit
 	include("connect.php");
 
 	$tabimages=[];
-	$images=$base ->query("SELECT produits.id, nom, prix, hauteur, largeur, description, chemin FROM produits, images WHERE produits.id=id_produits");
+	$images=$base ->query("SELECT id_sous_categorie, id_categorie, produits.id, nom, prix, hauteur, largeur, description, chemin FROM produits, images WHERE produits.id=id_produits");
 	
 
 	while($pictures = $images->fetch())
@@ -229,6 +229,13 @@ class produit
 
 	$this->tabimages=$tabimages;
 	return $tabimages;
+
+	}
+
+	
+	public function produit()
+	{
+	include("connect.php");
 
 	}
 

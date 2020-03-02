@@ -12,6 +12,7 @@ if(isset($_POST['connect']))
 {
 	$user = new userpdo;
 	$user->connect($_POST['login'], $_POST['password']);
+	
 	if(($user->connect($_POST['login'], $_POST['password']))=="ok" )
 	{
 		header('location: index.php');

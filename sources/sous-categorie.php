@@ -15,10 +15,11 @@
 		<?php
 		$produit = new produit;
 		$produit -> sous_categorie();
+		
 			for($i=0; $i < sizeof($produit -> sous_categorie()); $i++)
 			{
 			?>
-			<a href="produits.php?type=<?php echo $_GET['type'];?>?marque=<?php echo $produit -> sous_categorie()[$i][1]; ?>"><img width="<?php echo $produit -> sous_categorie()[$i][4];?>" height="<?php echo $produit -> sous_categorie()[$i][3];?>" src="<?php echo $produit -> sous_categorie()[$i][2];?>"></a>
+			<a href="produits.php?type=<?php echo $_GET['type'];?>&marque=<?php echo $produit -> sous_categorie()[$i][1]; ?>"><img width="<?php echo $produit -> sous_categorie()[$i][4];?>" height="<?php echo $produit -> sous_categorie()[$i][3];?>" src="<?php echo $produit -> sous_categorie()[$i][2];?>"></a>
 			<?php
 			}
 			?>
