@@ -8,6 +8,12 @@ font-family: 'Concert One' ;
 
 }
 
+body{
+  background-image: url('../img/fond_site.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 footer{
 display:flex;
 justify-content: space-between;
@@ -310,4 +316,88 @@ width: 45%;
 .disconnect input[type="submit"]:hover{
 
   color: #F5B041;
+}
+
+#inscription{
+display:flex;
+justify-content: center;
+margin:81px;
+margin-left: 547px;
+padding: 5px;
+background-color:rgba(255, 255, 255, 0.5);
+height: 30vh;
+width: 20vw;
+border-radius: 4px;
+text-align: center;
+
+}
+
+#panel_inscription{
+padding: 10%;
+padding-left: 0px;
+padding-right: 0px;
+margin-right:4%;
+text-align: center;
+
+}
+
+#connexion{
+display:flex;
+justify-content: center;
+margin: 124px;
+margin-left: 35%;
+padding: 2px;
+padding-top: 42px;
+background-color:rgba(255, 255, 255, 0.5);
+height: 14vh;
+width: 30vw;
+border-radius: 4px;
+text-align: center;
+
+}
+
+#panel_connexion{
+
+padding-left: 0px;
+padding-right: 0px;
+margin: 5px;
+margin-top: 10%;
+margin-right:4%;
+text-align: center;
+
+}
+
+#profil{
+display:flex;
+justify-content: center;
+margin:81px;
+margin-left: 547px;
+padding: 5px;
+background-color:rgba(255, 255, 255, 0.5);
+height: 30vh;
+width: 20vw;
+border-radius: 4px;
+text-align: center;
+
+}
+
+#panel_profil{
+padding: 10%;
+padding-left: 0px;
+padding-right: 0px;
+margin-right:4%;
+text-align: center;
+
+}
+
+
+.produits_encadrement{
+background-color: rgba(255, 255, 255, 0.63);
+display: flex;
+justify-content: center;
+}
+
+.hover_produits:hover{
+background-color: rgba(0, 0, 0, 0.61);
+
 }

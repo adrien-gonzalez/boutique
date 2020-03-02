@@ -6,7 +6,6 @@
 	</head>
 
 <body>
-
 <?php include("functions.php");?>
 <?php include("header.php");?>
 
@@ -15,7 +14,7 @@
 		<?php
 		$produit = new produit;
 		$produit -> sous_categorie();
-		
+
 			for($i=0; $i < sizeof($produit -> sous_categorie()); $i++)
 			{
 			?>
