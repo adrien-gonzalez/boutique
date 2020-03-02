@@ -1,7 +1,7 @@
 
 <!-- ------- PARTIE PHP - FONCTION REGISTER ------- -->
 
-<?php include("functions.php"); 
+<?php include("functions.php");
 
 
 if(isset($_SESSION['login']))
@@ -26,10 +26,17 @@ if(isset($_POST['signin']))
 <html>
 	<head>
 		<link href="boutique.css" rel="stylesheet">
-	</head>	
+	</head>
 	<body>
 
+
+
 		<?php include("header.php");?>
+
+		<div id="inscription">
+			<div id="panel_inscription">
+
+			</div>
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
 			<input type="text" name="lastname" required placeholder="Nom">
@@ -39,7 +46,8 @@ if(isset($_POST['signin']))
 			<input type="password" name="pass2" required placeholder="Confirmer votre mot de passe">
 			<input type="submit" name="signin" required value="S'inscrire">
 		</form>
-
+	</div>
+</div>
 <?php include("footer.php");?>
 	</body>
 </html>

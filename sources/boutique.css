@@ -269,9 +269,53 @@ color: #F5B041 ;
   transition: 0.2s;
 }
 
+#inscription{
+display:flex;
+justify-content: center;
+margin:81px;
+margin-left: 547px;
+padding: 5px;
+background-color:rgba(255, 255, 255, 0.5);
+height: 30vh;
+width: 15vw;
+border-radius: 4px;
+text-align: center;
 
+}
 
+#panel_inscription{
+padding: 100%;
+padding-left: 0px;
+padding-right: 0px;
+margin-right:4%;
+text-align: center;
 
+}
+
+#connexion{
+display:flex;
+justify-content: center;
+margin: 124px;
+margin-left: 35%;
+padding: 5px;
+padding-top: 42px;
+background-color:rgba(255, 255, 255, 0.5);
+height: 10vh;
+width: 30vw;
+border-radius: 4px;
+text-align: center;
+
+}
+
+#panel_connexion{
+
+padding-left: 0px;
+padding-right: 0px;
+margin-top: 10%;
+margin-right:4%;
+text-align: center;
+
+}
 .sous_categorie{
 
   display: flex;

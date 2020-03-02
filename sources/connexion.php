@@ -1,6 +1,6 @@
 <!-- ------- PARTIE PHP - FONCTION REGISTER ------- -->
 
-<?php include("functions.php"); 
+<?php include("functions.php");
 
 
 if(isset($_SESSION['login']))
@@ -26,14 +26,20 @@ if(isset($_POST['connect']))
 <html>
 	<head>
 		<link href="boutique.css" rel="stylesheet">
-	</head>	
+	</head>
 	<body>
 		<?php include("header.php");?>
+		<div id="connexion">
+<div id="panel_connexion">
+
+</div>
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
 			<input type="password" name="password" required placeholder="Password">
 			<input type="submit" name="connect" required value="Connexion">
 		</form>
+	</div>
+
 		<?php include("footer.php");?>
 	</body>
 </html>
