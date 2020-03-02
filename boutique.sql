@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 02 mars 2020 à 08:38
+-- Généré le :  lun. 02 mars 2020 à 08:51
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 -- Déchargement des données de la table `categorie`
 --
 
-INSERT INTO `categorie` (`id`, `nom`) VALUES
+INSERT DELAYED INTO `categorie` (`id`, `nom`) VALUES
 (1, 'Gamer'),
 (2, 'Bureautique'),
 (3, 'Multimédia');
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `images` (
 -- Déchargement des données de la table `images`
 --
 
-INSERT INTO `images` (`id`, `id_produit`, `nom`, `chemin`, `id_categorie`, `id_sous_categorie`, `hauteur`, `largeur`) VALUES
+INSERT DELAYED INTO `images` (`id`, `id_produit`, `nom`, `chemin`, `id_categorie`, `id_sous_categorie`, `hauteur`, `largeur`) VALUES
 (1, NULL, 'hp', '../img/hp.jpg', NULL, 1, 200, 200),
 (2, NULL, 'asus', '../img/asus.jpg', NULL, 2, 200, 200),
 (3, NULL, 'msi', '../img/msi.jpg', NULL, 3, 200, 200);
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `sous-categorie` (
 -- Déchargement des données de la table `sous-categorie`
 --
 
-INSERT INTO `sous-categorie` (`id`, `nom`) VALUES
+INSERT DELAYED INTO `sous-categorie` (`id`, `nom`) VALUES
 (1, 'HP'),
 (2, 'Asus'),
 (3, 'MSI');
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `login`, `nom`, `prenom`, `email`, `password`) VALUES
+INSERT DELAYED INTO `utilisateurs` (`id`, `login`, `nom`, `prenom`, `email`, `password`) VALUES
 (12, 'Firefou', 'Gonzalez', 'Adrien', 'adrien1361@hotmail.fr', '$2y$12$R9bvoYGcnfMF49LCUuzD1.0DdvWkNRapF5HgecrmRhz0Ec0gYHHWO');
 COMMIT;
 
