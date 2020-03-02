@@ -176,29 +176,61 @@ public function refresh()
 class produit
 {
 
-	public 	$tab;
+	public 	$tabcategorie;
+	public 	$tabsouscategorie;
+	public $tabimages;
+
+
+	public function categorie()
+	{
+	include("connect.php");
+
+	$tabcategorie=[];
+	$categorie=$base ->query("SELECT * FROM `categorie`");
+
+	while($images = $categorie->fetch())
+	{
+		array_push($tabcategorie, $images);
+	}
+		$this->tabcategorie=$tabcategorie;
+		return $tabcategorie;
+	}
 
 	public function sous_categorie()
 	{
 	include("connect.php");
 
-	$tab=[];
-	$sous_categorie=$base ->query("SELECT *from images");
+	$tabsouscategorie=[];
+	$sous_categorie=$base ->query("SELECT * FROM `sous-categorie`");
 	
 
 	while($images = $sous_categorie->fetch())
 	{
-		array_push($tab, $images);
+		array_push($tabsouscategorie, $images);
 	}
 
-	$this->tab=$tab;
-	return $tab;
+	$this->tabsouscategorie=$tabsouscategorie;
+	return $tabsouscategorie;
 
-}
+	}
 
-public function taille()
-{
-	return(sizeof($this->tab));
-}
+	public function images()
+	{
+	include("connect.php");
+
+	$tabimages=[];
+	$images=$base ->query("SELECT produits.id, nom, prix, hauteur, largeur, description, chemin FROM produits, images WHERE produits.id=id_produits");
+	
+
+	while($pictures = $images->fetch())
+	{
+		array_push($tabimages, $pictures);
+	}
+
+	$this->tabimages=$tabimages;
+	return $tabimages;
+
+	}
+
 
 }
