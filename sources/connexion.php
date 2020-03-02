@@ -30,15 +30,15 @@ if(isset($_POST['connect']))
 	<body>
 		<?php include("header.php");?>
 		<div id="connexion">
-<div id="panel_connexion">
-
-</div>
+			<p>Connectez Vous!</p>
+		<div id="panel_connexion">
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
 			<input type="password" name="password" required placeholder="Password">
 			<input type="submit" name="connect" required value="Connexion">
 		</form>
 	</div>
+</div>
 
 		<?php include("footer.php");?>
 	</body>

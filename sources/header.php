@@ -8,13 +8,16 @@
 
 <nav>
   <ul>
-   
+
+
+
+
 <?php if(isset($_POST['deco']))
 {
   $user = new userpdo;
   $user->disconnect();
 
-} 
+}
 ?>
 
 <?php if(isset($_SESSION['login']))
@@ -24,63 +27,48 @@
   <li>
       <a class="menu" href="">Catégorie</a>
       <ul>
-        <li>
-          <a class="menu" href="sous-categorie?type=gamer">PC Gamer</a>
-          <ul>
-            <li>
-              <a class="menu" href="produit.php?type=gamer?marque=hp">HP</a>
+
+              <?php
+              $produit= new produit();
+              $produit -> categorie();
+              $produit -> sous_categorie();
+
+              for($j=0; $j < sizeof($produit -> categorie()); $j++)
+              {
+              ?>
+              <li>
+              <a class="menu" href="sous-categorie.php?type=<?php echo $produit -> categorie()[$j][2];?>"> <?php echo $produit -> categorie()[$j][1];?></a>
+              <ul>
+              <?php
+              for($i=0; $i < sizeof($produit -> categorie()); $i++)
+              {
+              ?>
+              <li>
+              <a class="menu" href="produits.php?type=<?php echo $produit -> categorie()[$j][2];?>?marque=<?php echo $produit -> sous_categorie()[$i][1];?>"> <?php echo $produit -> sous_categorie()[$i][1];?></a>
+              </li>
+              <?php
+              }
+              ?>
+              </ul>
+              <?php
+              }
+              ?>
             </li>
-            <li>
-              <a class="menu" href="produit.php?type=gamer?marque=asus">Asus</a>
-            </li>
-             <li>
-              <a class="menu" href="produit.php?type=gamer?marque=msi">MSI</a>
-            </li>
-          </ul>
-        </li>
-     <li>
-          <a class="menu" href="sous-categorie?type=bureautique">PC Bureautique</a>
-          <ul>
-            <li>
-              <a class="menu" href="produit.php?type=bureautique?marque=hp">HP</a>
-            </li>
-            <li>
-              <a class="menu" href="produit.php?type=bureautique?marque=asus">Asus</a>
-            </li>
-             <li>
-              <a class="menu" href="produit.php?type=bureautique?marque=msi">MSI</a>
-            </li>
-          </ul>
-        </li>
-     <li>
-          <a class="menu" href="sous-categorie?type=multimedia">PC Multimédia</a>
-          <ul>
-           <li>
-              <a class="menu" href="produit.php?type=multimedia?marque=hp">HP</a>
-            </li>
-            <li>
-              <a class="menu" href="produit.php?type=multimedia?marque=asus">Asus</a>
-            </li>
-             <li>
-              <a class="menu" href="produit.php?type=multimedia?marque=msi">MSI</a>
-            </li>
-          </ul>
-        </li>
       </ul>
     </li>
     <li>
-      <a href=""><div class="logoprofilhover"></div></a>  
+      <a href=""><div class="logoprofilhover"></div></a>
         <ul>
           <li>
             <a class="menu" href="profil.php">Mon profil</a>
           </li>
           <li>
             <a class="menu" href="commandes.php">Mes commandes</a>
-          </li>  
+          </li>
           </ul>
    </li>
   <li>
-      <a href="index.php"><div class="logohover"></div></a>      
+      <a href="index.php"><div class="logohover"></div></a>
   </li>
    <li>
       <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
@@ -90,63 +78,48 @@
         <input name="deco" type="submit" value="Déconnexion">
       </form>
   </li>
-<?php 
+<?php
 }
 else
 {
 ?>
-   <li>
-      <a class="menu" href="#">Catégorie</a>
+  <li>
+      <a class="menu" href="">Catégorie</a>
       <ul>
-        <li>
-          <a class="menu" href="sous-categorie?type=gamer">PC Gamer</a>
-          <ul>
-            <li>
-              <a class="menu" href="produit.php?type=gamer?marque=hp">HP</a>
+
+              <?php
+              $produit= new produit();
+              $produit -> categorie();
+              $produit -> sous_categorie();
+
+              for($j=0; $j < sizeof($produit -> categorie()); $j++)
+              {
+              ?>
+              <li>
+              <a class="menu" href="sous-categorie.php?type=<?php echo $produit -> categorie()[$j][2];?>"> <?php echo $produit -> categorie()[$j][1];?></a>
+              <ul>
+              <?php
+              for($i=0; $i < sizeof($produit -> categorie()); $i++)
+              {
+              ?>
+              <li>
+              <a class="menu" href="produits.php?type=<?php echo $produit -> categorie()[$j][2];?>?marque=<?php echo $produit -> sous_categorie()[$i][1];?>"> <?php echo $produit -> sous_categorie()[$i][1];?></a>
+              </li>
+              <?php
+              }
+              ?>
+              </ul>
+              <?php
+              }
+              ?>
             </li>
-            <li>
-              <a class="menu" href="produit.php?type=gamer?marque=asus">Asus</a>
-            </li>
-             <li>
-              <a class="menu" href="produit.php?type=gamer?marque=msi">MSI</a>
-            </li>
-          </ul>
-        </li>
-     <li>
-          <a class="menu" href="sous-categorie?type=bureautique">PC Bureautique</a>
-          <ul>
-            <li>
-              <a class="menu" href="produit.php?type=bureautique?marque=hp">HP</a>
-            </li>
-            <li>
-              <a class="menu" href="produit.php?type=bureautique?marque=asus">Asus</a>
-            </li>
-             <li>
-              <a class="menu" href="produit.php?type=bureautique?marque=msi">MSI</a>
-            </li>
-          </ul>
-        </li>
-     <li>
-          <a class="menu" href="sous-categorie?type=multimedia">PC Multimédia</a>
-          <ul>
-           <li>
-              <a class="menu" href="produit.php?type=multimedia?marque=hp">HP</a>
-            </li>
-            <li>
-              <a class="menu" href="produit.php?type=multimedia?marque=asus">Asus</a>
-            </li>
-             <li>
-              <a class="menu" href="produit.php?type=multimedia?marque=msi">MSI</a>
-            </li>
-          </ul>
-        </li>
       </ul>
     </li>
-  <li>
-      <a href="contact.php">Contactez-nous</a>  
+   <li>
+      <a href="contact.php">Contactez-nous</a>
   </li>
   <li>
-       <a href="index.php"><div class="logohover"></div></a>      
+       <a href="index.php"><div class="logohover"></div></a>
   </li>
    <li>
       <a href="inscription.php">Inscription</a>
@@ -154,9 +127,9 @@ else
   <li>
       <a href="connexion.php">Connexion</a>
   </li>
-<?php
-}
-?>
+  <?php
+  }
+  ?>
 </ul>
 
 </nav>
