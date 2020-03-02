@@ -8,7 +8,7 @@ session_start();
 
 class userpdo
 {
-	
+
 	private $id;
 	public 	$login;
 	public 	$nom;
@@ -16,7 +16,7 @@ class userpdo
 	public 	$email;
 	public 	$password;
 	public 	$password2;
-	
+
 
 
 public function register($login, $nom, $prenom, $email, $password, $password2)
@@ -39,8 +39,8 @@ public function register($login, $nom, $prenom, $email, $password, $password2)
 		else
 		{
 			if($etat== 0)
-			{ 
-				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
+			{
+				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 				$requser = $base->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash')");
 				$msg="ok";
 			}
@@ -59,8 +59,8 @@ public function connect($login, $password)
 	include("connect.php");
 	$user = $base->query("SELECT *FROM utilisateurs WHERE login='$login'");
 	$donnees = $user->fetch();
-		
-		if(password_verify($password,$donnees['password'])) 
+
+		if(password_verify($password,$donnees['password']))
 		{
 			$this->id=$donnees['id'];
 			$this->login=$login;
@@ -68,14 +68,14 @@ public function connect($login, $password)
 			$this->prenom=$donnees['prenom'];
 			$this->email=$donnees['email'];
 			$this->password=$donnees['password'];
-		
+
 			$_SESSION['login']=$login;
 			$_SESSION['password']=$password;
 			$msg="ok";
 		}
 		else
 		{
-			$msg="Login ou mot de passe incorrect";	
+			$msg="Login ou mot de passe incorrect";
 		}
 
 		return $msg;
@@ -103,7 +103,7 @@ public function delete()
 }
 
 public function update($login, $nom, $prenom, $email,$password)
-{	
+{
 	include("connect.php");
 
 	if(isset($_SESSION['login']))
@@ -129,7 +129,7 @@ public function getAllInfos()
 {
 	if(isset($_SESSION['login']))
 	{
-		
+
 		$tab=array($this->login,
 		$this->nom,
 		$this->prenom,
@@ -202,7 +202,7 @@ class produit
 
 	$tabsouscategorie=[];
 	$sous_categorie=$base ->query("SELECT * FROM `sous-categorie`");
-	
+
 
 	while($images = $sous_categorie->fetch())
 	{
@@ -220,7 +220,7 @@ class produit
 
 	$tabimages=[];
 	$images=$base ->query("SELECT produits.id, nom, prix, hauteur, largeur, description, chemin FROM produits, images WHERE produits.id=id_produits");
-	
+
 
 	while($pictures = $images->fetch())
 	{
@@ -233,4 +233,22 @@ class produit
 	}
 
 
+
+// PARTIE PANIER
+
+public function panier_affichage()
+
+	{
+		include("connect.php");
+
+			$panier=[];
+			$panier_affichage=$base ->query("SELECT * FROM `commandes`");
+
+
+
+		for($i=0; $i < sizeof($produit -> images()); $i++)
+{
+	echo "ok";
+	}
+}
 }
