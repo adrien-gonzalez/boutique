@@ -8,7 +8,15 @@
 
 <nav>
   <ul>
-         
+   
+<?php if(isset($_POST['deco']))
+{
+  $user = new userpdo;
+  $user->disconnect();
+
+} 
+?>
+
 <?php if(isset($_SESSION['login']))
 {
 ?>
@@ -78,7 +86,9 @@
       <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
   </li>
   <li>
-      <a href="deconnexion.php">Déconnexion</a>
+      <form class="disconnect" method="post" action="" >
+        <input name="deco" type="submit" value="Déconnexion">
+      </form>
   </li>
 <?php 
 }

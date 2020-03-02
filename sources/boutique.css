@@ -296,3 +296,18 @@ width: 45%;
   }
 
 }
+
+
+.disconnect input[type="submit"]{
+
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 16px; 
+  transition: 0.2s;
+}
+
+.disconnect input[type="submit"]:hover{
+
+  color: #F5B041;
+}

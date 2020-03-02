@@ -83,8 +83,9 @@ public function connect($login, $password)
 
 public function disconnect()
 {
+	unset($_SESSION['login']);
+	unset($_SESSION['password']);
 	session_destroy();
-	return "Vous êtes bien déconnecté";
 }
 
 public function delete()
