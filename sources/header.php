@@ -41,7 +41,7 @@ if(isset($_POST['deco']))
                   {
                     ?>
                     <li>
-                      <a class="menu" href="produits.php?type=<?php echo $tab1[$j][2];?>&id=<?php echo $tab[$j][0];?>&marque=<?php  echo $tab1[$i][1];?>&id2=<?php echo $tab[$i][0];?>"> <?php echo $tab1[$i][1];?></a>
+                      <a class="menu" href="produits.php?type=<?php echo $tab[$j][2];?>&id=<?php echo $tab[$j][0];?>&marque=<?php  echo $tab1[$i][1];?>&id2=<?php echo $tab[$i][0];?>"> <?php echo $tab1[$i][1];?></a>
                     </li>
                   <?php
                   }

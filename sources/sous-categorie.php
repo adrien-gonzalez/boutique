@@ -13,12 +13,14 @@
 	<div>
 		<?php
 		$produit = new produit;
-		$produit -> sous_categorie();
+		$tab=$produit -> categorie();
+		$tab1=$produit -> sous_categorie();
+		
 
-			for($i=0; $i < sizeof($produit -> sous_categorie()); $i++)
+			for($i=0; $i < sizeof($tab1); $i++)
 			{
 			?>
-			<a href="produits.php?type=<?php echo $_GET['type'];?>&marque=<?php echo $produit -> sous_categorie()[$i][1]; ?>"><img width="<?php echo $produit -> sous_categorie()[$i][4];?>" height="<?php echo $produit -> sous_categorie()[$i][3];?>" src="<?php echo $produit -> sous_categorie()[$i][2];?>"></a>
+			<a href="produits.php?type=<?php echo $_GET['type'];?>&id=<?php  echo $_GET['id'];?>&marque=<?php echo $tab1[$i][1]; ?>&id2=<?php echo $tab[$i][0];?>"><img width="<?php echo $tab1[$i][4];?>" height="<?php echo $tab1[$i][3];?>" src="<?php echo $tab1[$i][2];?>"></a>
 			<?php
 			}
 			?>

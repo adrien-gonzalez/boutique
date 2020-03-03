@@ -178,10 +178,16 @@ class produit
 {
 
 	
-	public 	$tabcategorie;
-	public 	$tabsouscategorie;
+	public $tabcategorie;
+	public $tabsouscategorie;
 	public $tabimages;
 	public $base;
+
+	public $nom;
+	public $categorie;
+	public $sous_categorie;
+	public $description;
+	public $prix;
 		
 	function connectdb()
 	{
@@ -241,6 +247,46 @@ class produit
 	return $tabimages;
 
 	}
+
+	public function insert_produits($nom, $categorie, $sous_categorie, $description, $prix, $image, $hauteur, $largeur)
+	{
+
+	$existname=$this->connectdb()->query("SELECT *FROM produits WHERE nom = '$nom'");
+	$value = $existname->rowCount();
+
+	if($value ==0)
+	{
+		$insert_produits=$this->connectdb()->query("INSERT INTO produits VALUES(NULL, '$nom','$categorie','$sous_categorie','$description','$prix')");
+		$id_produit=$this->connectdb()->query("SELECT id FROM `produits` ORDER by id DESC");
+		$id=$id_produit->fetch();
+
+		$numid=$id['id'];
+		$insert_images=$this->connectdb()->query("INSERT INTO images VALUES(NULL, '$numid','$image','$hauteur','$largeur')");
+		$exist="Produit bien rajouté";
+
+	}
+	else
+	{
+		$exist="Produit déjà existant";
+	}
+	
+		return $exist;
+	}
+
+	public function produits()
+	{
+		$tabproduit=[];
+		$numproduit=$this->connectdb()->query("SELECT nom FROM produits");
+		
+		while($num=$numproduit->fetch())
+		{
+			array_push($tabproduit, $num);
+		}
+
+		return $tabproduit;
+	}
+
+
 
 	
 }
