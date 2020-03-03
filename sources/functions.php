@@ -256,7 +256,8 @@ class produit
 
 	if($value ==0)
 	{
-		$insert_produits=$this->connectdb()->query("INSERT INTO produits VALUES(NULL, '$nom','$categorie','$sous_categorie','$description','$prix')");
+		$desc=str_replace ( "'","''", $description);
+		$insert_produits=$this->connectdb()->query("INSERT INTO produits VALUES(NULL, '$nom','$categorie','$sous_categorie','$desc','$prix')");
 		$id_produit=$this->connectdb()->query("SELECT id FROM `produits` ORDER by id DESC");
 		$id=$id_produit->fetch();
 
