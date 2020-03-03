@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 02 mars 2020 à 12:26
+-- Généré le :  mar. 03 mars 2020 à 08:53
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -86,8 +86,6 @@ CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_produits` int(11) DEFAULT NULL,
   `chemin` varchar(255) DEFAULT NULL,
-  `id_categorie` int(11) DEFAULT NULL,
-  `id_sous_categorie` int(11) DEFAULT NULL,
   `hauteur` int(11) NOT NULL,
   `largeur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -97,10 +95,10 @@ CREATE TABLE IF NOT EXISTS `images` (
 -- Déchargement des données de la table `images`
 --
 
-INSERT DELAYED INTO `images` (`id`, `id_produits`, `chemin`, `id_categorie`, `id_sous_categorie`, `hauteur`, `largeur`) VALUES
-(5, 2, '../img/hpomen_pg.png', 1, 1, 200, 200),
-(4, 1, '../img/hpomen_fg.png', 1, 1, 200, 200),
-(6, 3, '../img/hppavillon_fg', 1, 1, 200, 230);
+INSERT DELAYED INTO `images` (`id`, `id_produits`, `chemin`, `hauteur`, `largeur`) VALUES
+(5, 2, '../img/hpomen_pg.png', 200, 200),
+(4, 1, '../img/hpomen_fg.png', 200, 200),
+(6, 3, '../img/hppavillon_fg', 200, 230);
 
 -- --------------------------------------------------------
 
@@ -131,11 +129,11 @@ INSERT DELAYED INTO `produits` (`id`, `nom`, `id_categorie`, `id_sous_categorie`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sous-categorie`
+-- Structure de la table `sous_categorie`
 --
 
-DROP TABLE IF EXISTS `sous-categorie`;
-CREATE TABLE IF NOT EXISTS `sous-categorie` (
+DROP TABLE IF EXISTS `sous_categorie`;
+CREATE TABLE IF NOT EXISTS `sous_categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `chemin` varchar(50) NOT NULL,
@@ -145,10 +143,10 @@ CREATE TABLE IF NOT EXISTS `sous-categorie` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `sous-categorie`
+-- Déchargement des données de la table `sous_categorie`
 --
 
-INSERT DELAYED INTO `sous-categorie` (`id`, `nom`, `chemin`, `hauteur`, `largeur`) VALUES
+INSERT DELAYED INTO `sous_categorie` (`id`, `nom`, `chemin`, `hauteur`, `largeur`) VALUES
 (1, 'hp', '../img/hp.jpg', 200, 200),
 (2, 'asus', '../img/asus.jpg', 200, 200),
 (3, 'msi', '../img/msi.jpg', 200, 200);
