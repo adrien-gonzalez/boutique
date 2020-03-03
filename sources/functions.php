@@ -260,6 +260,7 @@ class produit
 		$id_produit=$this->connectdb()->query("SELECT id FROM `produits` ORDER by id DESC");
 		$id=$id_produit->fetch();
 
+
 		$numid=$id['id'];
 		$insert_images=$this->connectdb()->query("INSERT INTO images VALUES(NULL, '$numid','$image','$hauteur','$largeur')");
 		$exist="Produit bien rajouté";
@@ -276,7 +277,7 @@ class produit
 	public function produits()
 	{
 		$tabproduit=[];
-		$numproduit=$this->connectdb()->query("SELECT nom FROM produits");
+		$numproduit=$this->connectdb()->query("SELECT * FROM produits");
 		
 		while($num=$numproduit->fetch())
 		{
@@ -285,6 +286,42 @@ class produit
 
 		return $tabproduit;
 	}
+
+	public function nomproduits($nom)
+	{
+		$tabproduit=[];
+		$nomproduit=$this->connectdb()->query("SELECT *FROM produits WHERE nom='$nom'");
+
+		while($result=$nomproduit->fetch())
+		{
+			array_push($tabproduit, $result);
+		}
+
+		$id=$tabproduit[0][0];
+		$img=$this->connectdb()->query("SELECT *FROM images WHERE id_produits='$id'");
+
+		while($resultat=$img->fetch())
+		{
+			array_push($tabproduit, $resultat);
+		}
+
+		return $tabproduit;
+		
+	}
+
+	function genererChaineAleatoire($longueur = 10)
+	{
+	 $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	 $longueurMax = strlen($caracteres);
+	 $chaineAleatoire = '';
+	 for ($i = 0; $i < $longueur; $i++)
+	 {
+	 $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
+	 }
+	 return $chaineAleatoire;
+	}
+
+
 
 
 
