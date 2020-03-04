@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 04 mars 2020 à 15:46
+-- Généré le :  mer. 04 mars 2020 à 16:18
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `images` (
 
 INSERT DELAYED INTO `images` (`id`, `id_produits`, `chemin`, `hauteur`, `largeur`) VALUES
 (36, 39, '../img/BOrbQEBdeH.jpg', 200, 200),
-(34, 37, '../img/FtjjFoQyl5.jpg', 200, 200),
+(34, 37, '../img/MBUQm0jKEG.jpg', 200, 200),
 (35, 38, '../img/iZEhN5eufX.jpg', 200, 200);
 
 -- --------------------------------------------------------
