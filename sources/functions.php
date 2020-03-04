@@ -7,7 +7,7 @@ session_start();
 
 class userpdo
 {
-	
+
 	private $id;
 	public 	$login;
 	public 	$nom;
@@ -16,10 +16,10 @@ class userpdo
 	public 	$password;
 	public 	$password2;
 	public $base;
-	
+
 function connectdb()
 	{
-	   
+
 		$base = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 		return $base;
 	}
@@ -43,8 +43,8 @@ public function register($login, $nom, $prenom, $email, $password, $password2)
 		else
 		{
 			if($etat== 0)
-			{ 
-				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
+			{
+				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 				$requser =  $this->connectdb()->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash')");
 				$msg="ok";
 			}
@@ -62,8 +62,8 @@ public function connect($login, $password)
 {
 	$user =  $this->connectdb()->query("SELECT *FROM utilisateurs WHERE login='$login'");
 	$donnees = $user->fetch();
-		
-		if(password_verify($password,$donnees['password'])) 
+
+		if(password_verify($password,$donnees['password']))
 		{
 			$this->id=$donnees['id'];
 			$this->login=$login;
@@ -71,14 +71,14 @@ public function connect($login, $password)
 			$this->prenom=$donnees['prenom'];
 			$this->email=$donnees['email'];
 			$this->password=$donnees['password'];
-		
+
 			$_SESSION['login']=$login;
 			$_SESSION['password']=$password;
 			$msg="ok";
 		}
 		else
 		{
-			$msg="Login ou mot de passe incorrect";	
+			$msg="Login ou mot de passe incorrect";
 		}
 
 		return $msg;
@@ -105,7 +105,7 @@ public function delete()
 }
 
 public function update($login, $nom, $prenom, $email,$password)
-{	
+{
 
 
 
@@ -132,7 +132,7 @@ public function getAllInfos()
 {
 	if(isset($_SESSION['login']))
 	{
-		
+
 		$tab=array($this->login,
 		$this->nom,
 		$this->prenom,
@@ -177,7 +177,7 @@ public function refresh()
 class produit
 {
 
-	
+
 	public $tabcategorie;
 	public $tabsouscategorie;
 	public $tabimages;
@@ -188,10 +188,10 @@ class produit
 	public $sous_categorie;
 	public $description;
 	public $prix;
-		
+
 	function connectdb()
 	{
-	   
+
 		try {
 			$base = new PDO('mysql:host=localhost;dbname=boutique', 'root', '',
 				array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
@@ -219,7 +219,7 @@ class produit
 
 	$tabsouscategorie=[];
 	$sous_categorie=$this->connectdb()->query("SELECT * FROM sous_categorie");
-	
+
 
 	while($images = $sous_categorie->fetch())
 	{
@@ -236,7 +236,7 @@ class produit
 
 	$tabimages=[];
 	$images=$this->connectdb()->query("SELECT id_sous_categorie, id_categorie, produits.id, nom, prix, hauteur, largeur, description, chemin FROM produits, images WHERE produits.id=id_produits");
-	
+
 
 	while($pictures = $images->fetch())
 	{
@@ -271,7 +271,7 @@ class produit
 	{
 		$exist="Produit déjà existant";
 	}
-	
+
 		return $exist;
 	}
 
@@ -279,7 +279,7 @@ class produit
 	{
 		$tabproduit=[];
 		$numproduit=$this->connectdb()->query("SELECT * FROM produits");
-		
+
 		while($num=$numproduit->fetch())
 		{
 			array_push($tabproduit, $num);
@@ -307,7 +307,7 @@ class produit
 		}
 
 		return $tabproduit;
-		
+
 	}
 
 	function genererChaineAleatoire($longueur = 10)
@@ -321,7 +321,8 @@ class produit
 	 }
 	 return $chaineAleatoire;
 	}
-	
-}
 
+}
+?>
+<?php
 ?>
