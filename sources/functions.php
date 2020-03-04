@@ -188,6 +188,7 @@ class produit
 	public $sous_categorie;
 	public $description;
 	public $prix;
+	public $id;
 		
 	function connectdb()
 	{
@@ -261,7 +262,6 @@ class produit
 		$id_produit=$this->connectdb()->query("SELECT id FROM `produits` ORDER by id DESC");
 		$id=$id_produit->fetch();
 
-
 		$numid=$id['id'];
 		$insert_images=$this->connectdb()->query("INSERT INTO images VALUES(NULL, '$numid','$image','$hauteur','$largeur')");
 		$exist="Produit bien rajouté";
@@ -284,7 +284,7 @@ class produit
 		{
 			array_push($tabproduit, $num);
 		}
-
+		// $this->tabimages=$tabimages;
 		return $tabproduit;
 	}
 
@@ -310,11 +310,16 @@ class produit
 		
 	}
 
-	// function update($nom, $categorie, $sous_categorie, $description, $prix, $image, $hauteur, $largeur);
-	// {
-		
+	public function update($nom, $categorie, $sous_categorie, $description, $prix, $image, $hauteur, $largeur, $id)
+	{
+		$desc=str_replace ( "'","''", $description);
+		$updateproduit =  $this->connectdb()->query("UPDATE produits SET nom='$nom', id_categorie='$categorie', id_sous_categorie='$sous_categorie', description='$desc', prix='$prix' WHERE id='$id'");
 
-	// }
+		$updateimg= $this->connectdb()->query("UPDATE images SET chemin='$image', hauteur='$hauteur', largeur='$largeur' WHERE id_produits='$id'");
+		
+		header('Location: administration.php');
+	}
+
 
 	function genererChaineAleatoire($longueur = 10)
 	{

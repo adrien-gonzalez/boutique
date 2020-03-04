@@ -59,6 +59,7 @@ border:1px solid white;
   color: white;
   transition: 0.5s;
   border:none;
+  cursor: pointer;
 }
 
 .administration .choix input[type="submit"]:hover{
@@ -66,7 +67,7 @@ background-color: #273746 ;
 }
 
 .administration .adminform form input[type="number"]{
-  width: 20%;
+  width: 100px;
   padding: 10px;
 }
 

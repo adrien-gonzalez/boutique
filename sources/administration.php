@@ -6,61 +6,50 @@ $produit = new produit;
 $tabproduits=$produit->produits();
 $tab=$produit->categorie();
 $tab1=$produit->sous_categorie();
-$imagenom=$produit->genererChaineAleatoire(10);
+
+
+
+if(isset($_POST['modifier']))
+{
+
+	 if($_FILES["fileToUpload"]["error"]==0)
+	 {
+	 	include("upload.php");
+	 	$handle=opendir("../img/");
+		unlink($_POST['chemin']);
+		
+
+	 }
+	 else
+	 {	
+	 	$_POST['image']= $_POST['chemin'];	
+	 }
+
+	$produit->update($_POST['nom'], $_POST['categorie'], $_POST['sous_categorie'], $_POST['description'], $_POST['prix'], $_POST['image'], $_POST['hauteur'], $_POST['largeur'], $_POST['id']);
+
+}
 
 if(isset($_POST['ajout_produit']))
 {
+	include("upload.php");
 	
-
-	
-	$target_dir = "../img/";
-	$name=$imagenom.".jpg";
-
-
-	$target_file = $target_dir . basename($name);
-	$uploadOk = 1;
-	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-	// Check if image file is a actual image or fake image
-	
-
-
-	    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-	    if($check !== false) {
-	        echo "File is an image - " . $check["mime"] . ".";
-	        $uploadOk = 1;
-	    } else {
-	        echo "File is not an image.";
-	        $uploadOk = 0;
-	    }
-
-	    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
- 	       echo "The file ". basename($name). " has been uploaded.";
- 	   } else {
- 	       echo "Sorry, there was an error uploading your file.";
- 	   }
-
-
-
-
-	echo '<br><br><br>';
 	$chemin="../img/".$name;
 	$_POST['image']= $chemin;
 	
+	
 
-	$produit -> insert_produits($_POST['nom'], $_POST['categorie'], $_POST['sous_categorie'], $_POST['description'], $_POST['prix'],$_POST['image'], $_POST['hauteur'], $_POST['largeur']);
+// 	// $produit ->insert_produits($_POST['nom'], $_POST['categorie'], $_POST['sous_categorie'], $_POST['description'], $_POST['prix'],$_POST['image'], $_POST['hauteur'], $_POST['largeur']);
 }
 
-if(isset($_POST['nomproduit']))
+if(isset($_GET['action']))
 {
-	$nomproduit=$produit->nomproduits($_POST['nom']);
+	$nomproduit=$produit->nomproduits($_GET['nom']);
 }
 
 if(isset($_POST['supprimer']))
 {
 	echo $_POST['chemin'];	
 }
-
-
 
 
 
@@ -75,19 +64,20 @@ if(isset($_POST['supprimer']))
 <body class="administration">
 
 <div class="choix">
-	<form action="" method="post">
-		<input type="submit" name="produit+" value="Ajouter un produit">
-		<input type="submit" name="produit-" value="Supprimer ou modifier un produit">
+	<form action="" method="get">
+		<input name="option" type="submit" value="Ajouter un produit">
+		<input name="option" type="submit" value="Supprimer ou modifier un produit">
 	</form>
 </div>
 
 
 
 
-
 	<?php
 
-	if(isset($_POST['produit+']))
+	if(isset($_GET['option']))
+	{
+	if($_GET['option']=="Ajouter un produit")
 	{
 	?>
 	<div class="adminform">
@@ -108,7 +98,6 @@ if(isset($_POST['supprimer']))
 				<?php
 				}
 				?>
-
 			</select>
 			<select name="sous_categorie">
 				<?php 
@@ -134,13 +123,11 @@ if(isset($_POST['supprimer']))
 	</div>
 	<?php
 	}
-	else if(isset($_POST['produit-']) || isset($_POST['nomproduit']))
+	else if($_GET['option']=="Supprimer ou modifier un produit")
 	{
-		if(!isset($_POST['nomproduit']))
-			{
 			?>
 		<div class="adminform2">
-			<form action="" method="post">	
+			<form action="" method="get">	
 				<select name="nom">
 					
 					<?php for($k=0; $k < sizeof($tabproduits); $k++)
@@ -152,19 +139,22 @@ if(isset($_POST['supprimer']))
 					?>
 				</select>
 					<div class="choix">
-						<input type="submit" name="nomproduit" value="Suivant">
+						<input type="submit" name="action" value="Valider">
 					</div>
 			</form>
 		</div>
 			<?php
-			}
-
-				if(isset($_POST['nomproduit']))
+			
+		}
+		}	
+		if(isset($_GET['nom']))
 				{
 				?>
 			<div class="adminform">
-				<form action="" method="post">
+				<form action="" method="post" enctype="multipart/form-data">
 				<div class="form">
+					<input  name="id" type="hidden" value="<?php echo $nomproduit[0][0];?>">
+					<input  name="chemin" type="hidden" value="<?php echo $nomproduit[1][2];?>">
 					<input name="nom" required type="text" placeholder="Nom du Produit" value="<?php echo $nomproduit[0][1];?>">
 					<input name="prix" required type="number" min="0.00" max="10000.00" step="0.01" placeholder="prix" value="<?php echo $nomproduit[0][5]; ?>"/>
 				</div>
@@ -172,7 +162,7 @@ if(isset($_POST['supprimer']))
 					<label>Image actuelle :</label>
 					<img width="120px" src="<?php echo $nomproduit[1][2];?>">
 					<label>Changer image :</label>
-					<input  type="file" id="avatar" name="image" accept="image/png, image/jpeg">
+					<input type="file" name="fileToUpload" id="fileToUpload">
 
 					<select name="categorie">
 
@@ -208,16 +198,17 @@ if(isset($_POST['supprimer']))
 						<input type="submit" value="Modifier "name="modifier">
 						<input type="submit" value="Supprimer" name="supprimer">
 					</div>
+				</form>
+			</div>
 				<?php
 				}
 				?>
-		</form>
-	</div>
-	<?php
-	}
+	
+	
+	
 
 
-include("footer.php");?>
+<?php include("footer.php");?>
 
 </body>
 </html>
