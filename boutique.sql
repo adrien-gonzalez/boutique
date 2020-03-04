@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 02 mars 2020 à 12:26
+-- Généré le :  mer. 04 mars 2020 à 15:46
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -86,21 +86,19 @@ CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_produits` int(11) DEFAULT NULL,
   `chemin` varchar(255) DEFAULT NULL,
-  `id_categorie` int(11) DEFAULT NULL,
-  `id_sous_categorie` int(11) DEFAULT NULL,
   `hauteur` int(11) NOT NULL,
   `largeur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `images`
 --
 
-INSERT DELAYED INTO `images` (`id`, `id_produits`, `chemin`, `id_categorie`, `id_sous_categorie`, `hauteur`, `largeur`) VALUES
-(5, 2, '../img/hpomen_pg.png', 1, 1, 200, 200),
-(4, 1, '../img/hpomen_fg.png', 1, 1, 200, 200),
-(6, 3, '../img/hppavillon_fg', 1, 1, 200, 230);
+INSERT DELAYED INTO `images` (`id`, `id_produits`, `chemin`, `hauteur`, `largeur`) VALUES
+(36, 39, '../img/BOrbQEBdeH.jpg', 200, 200),
+(34, 37, '../img/FtjjFoQyl5.jpg', 200, 200),
+(35, 38, '../img/iZEhN5eufX.jpg', 200, 200);
 
 -- --------------------------------------------------------
 
@@ -117,25 +115,25 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `description` text NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
 INSERT DELAYED INTO `produits` (`id`, `nom`, `id_categorie`, `id_sous_categorie`, `description`, `prix`) VALUES
-(1, 'HP Omen Obelisk', 1, 1, 'Processeur AMD Ryzen 7 3700U (2,3 GHz de fréquence de base, jusqu\'à 4 GHz de fréquence de rafale, 4 Mo de mémoire cache, 4 cœurs)\r\n\r\n8 Go de mémoire HyperX SDRAM DDR4-2666\r\nCarte graphique NVIDIA GeForce GTX 1660\r\n\r\nStockage : 1 To SATA + 256 Go SSD PCIe NVMe. Demarrage en quelques secondes, transfert de données et éxperience plus rapide à chaque utilisation.\r\n\r\nAvant : 2 ports USB 3.1; 1 prise combinée casque/microphone.\r\n\r\nArrière : 1 port USB 3.1 Type-C; 4 ports USB 3.1 Gen 1; 1 port USB 3.1 Gen 2, 1 entrée audio; 1 sortie audio; 1 entrée microphone', 960),
-(2, 'HP Omen 15', 1, 1, 'Puissant et performant, l\'ordinateur portable HP OMEN 15-dc1056nf dispose de composants de grande qualité qui rendront vos jeux plus immersifs, réels et fluides.\r\n\r\nLes points clés\r\n15,6\" Full HD (39,6 cm) - 2,4 kg\r\nIntel Core i5-9300H : 2,4 GHz ; Turbo 4,1 GHz / 4 coeurs / 8 Mo de mémoire cache\r\nSSD 256 Go\r\nMémoire vive 16 Go\r\nLe + : NVIDIA GeForce RTX2060 avec 6 Go', 950),
-(3, 'HP Pavilion Gaming 690-0117nf', 1, 1, 'Le PC de HP est équipé d’un processeur Intel Core i5-9400F avec 8 Go de RAM DDR4. D’un point de vue stockage, il est équipé d\'un HDD de 1 To + SSD 128 Go ainsi que 1 To de Disque Dur. Vous pouvez aisément sauvegarder des fichiers lourds sans vous demander s’il y a assez de place dans le PC. L’ordinateur de HP vous procure une connectivité WiFi et Bluetooth 4.2 mais il possède également un port Ethernet pour une connexion filaire. En toute situation, pour répondre à vos besoins divers, il est équipé de 2 x USB 3.1 type C; 3 x USB 3.1 type A afin de pouvoir connecter vos périphériques externes.\r\nCarte graphique : 1660 gtx', 800);
+(37, 'HP Pavillon Gaming', 1, 1, 'Equipé d\'un processeur AMD Ryzen™ 5 3550H (2,1 GHz / 3,7 GHz Boost - Quad-Core) et de 16 Go de mémoire vive DDR4-2400, le pc portable HP Pavilion Gaming 15 vous offre une puissance de traitement efficace pour une utilisation multimédia optimale. Son écran Full HD IPS 144Hz de 15,6 pouces à micro-bords (dalle mate) et sa carte graphique NVIDIA GeForce GTX 1650 4 Go vous délivrent un véritable confort visuel pour jouer à tous vos jeux vidéo préférés.', 700),
+(38, 'HP Obelisk', 1, 1, 'Windows 10 Famille 64\r\nProcesseur Intel® Core™ i5-9400F\r\n8 Go de mémoire HyperX® SDRAM\r\n1 To de stockage + 128 Go SSD\r\nCarte graphique NVIDIA® GeForce® GTX 1650 (4 Go de mémoire GDDR5 dédiée)\r\nChassis vitré. Qualité audio DTS Studio Sound™. Solution de refroidissement par air pour processeur.', 950),
+(39, 'HP Omen 15', 1, 1, 'Ecran : Full HD IPS anti-reflets micro-bords à rétroéclairage WLED de 39,6 cm (15,6\") de diagonale (1 920 x 1 080). Type d\'alimentation: Adaptateur secteur 150 W\r\nStockage et mémoire : 8 Go de RAM, Hybride (Disque Dur + SSD) 1000 Go + 128 Go\r\nProcesseur : Intel Core i5-8300H (2,3 GHz de fréquence de base, jusqu’à 4 GHz avec technologie Intel Turbo Boost, 8 Mo de mémoire cache, 4 cœurs)\r\nCarte Graphique : Carte NVIDIA GeForce GTX 1050 Ti (4 Go de mémoire GDDR5 dédiée)\r\nConnectivité : 1 port USB 3.1 Type-C ; 3 ports USB 3.1 Gen 1 ; 1 port HDMI\r\nLa vie de la batterie mixé utilisation: Jusqu\'à 6 heures et 15 minutes', 900);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sous-categorie`
+-- Structure de la table `sous_categorie`
 --
 
-DROP TABLE IF EXISTS `sous-categorie`;
-CREATE TABLE IF NOT EXISTS `sous-categorie` (
+DROP TABLE IF EXISTS `sous_categorie`;
+CREATE TABLE IF NOT EXISTS `sous_categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `chemin` varchar(50) NOT NULL,
@@ -145,10 +143,10 @@ CREATE TABLE IF NOT EXISTS `sous-categorie` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `sous-categorie`
+-- Déchargement des données de la table `sous_categorie`
 --
 
-INSERT DELAYED INTO `sous-categorie` (`id`, `nom`, `chemin`, `hauteur`, `largeur`) VALUES
+INSERT DELAYED INTO `sous_categorie` (`id`, `nom`, `chemin`, `hauteur`, `largeur`) VALUES
 (1, 'hp', '../img/hp.jpg', 200, 200),
 (2, 'asus', '../img/asus.jpg', 200, 200),
 (3, 'msi', '../img/msi.jpg', 200, 200);
