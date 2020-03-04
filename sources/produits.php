@@ -9,14 +9,15 @@
 <?php
 $produit= new produit();
 
+$image=$produit -> images();
 
-for($i=0; $i < sizeof($produit -> images()); $i++)
+for($i=0; $i < sizeof($image); $i++)
 {
-if($_GET['id']== $produit -> images()[$i][0] && $_GET['id2']==  $produit -> images()[$i][1])
+if($_GET['id']== $image[$i][0] && $_GET['id2']==  $image[$i][1])
 {
 ?>
 <div class="hover_produits">
-	<a href="description.php?id=<?php echo  $produit -> images()[$i][0];?>"><img height="<?php echo $produit -> images()[$i][5];?>" width="<?php echo $produit -> images()[$i][6];?>" src="<?php echo $produit -> images()[$i][8];?>">
+	<a href="description.php?id=<?php echo  $image[$i][2];?>"><img height="<?php echo $image[$i][5];?>" width="<?php echo $image[$i][6];?>" src="<?php echo $image[$i][8];?>">
 </div>
 <?php
 }

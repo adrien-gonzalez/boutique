@@ -17,8 +17,6 @@ if(isset($_POST['modifier']))
 	 	include("upload.php");
 	 	$handle=opendir("../img/");
 		unlink($_POST['chemin']);
-		
-
 	 }
 	 else
 	 {	
@@ -37,8 +35,7 @@ if(isset($_POST['ajout_produit']))
 	$_POST['image']= $chemin;
 	
 	
-
-// 	// $produit ->insert_produits($_POST['nom'], $_POST['categorie'], $_POST['sous_categorie'], $_POST['description'], $_POST['prix'],$_POST['image'], $_POST['hauteur'], $_POST['largeur']);
+	$produit ->insert_produits($_POST['nom'], $_POST['categorie'], $_POST['sous_categorie'], $_POST['description'], $_POST['prix'],$_POST['image'], $_POST['hauteur'], $_POST['largeur']);
 }
 
 if(isset($_GET['action']))
@@ -190,9 +187,9 @@ if(isset($_POST['supprimer']))
 
 					<div class="taille">
 						<label>Hauteur :</label>
-						<input name="hauteur" required type="number" value="200">
+						<input name="hauteur" required type="number" value="<?php echo $nomproduit[1][3];?>">
 						<label>Largeur :</label>
-						<input name="largeur" required type="number" value="200">
+						<input name="largeur" required type="number" value="<?php echo $nomproduit[1][4];?>">
 					</div>
 					<div class="choix">
 						<input type="submit" value="Modifier "name="modifier">
