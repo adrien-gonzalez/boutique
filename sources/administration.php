@@ -74,11 +74,12 @@ if(isset($_POST['supprimer']))
 	</head>
 <body class="administration">
 
-
-<form action="" method="post">
-	<input type="submit" name="produit+" value="Ajouter un produit">
-	<input type="submit" name="produit-" value="Supprimer ou modifier un produit">
-</form>
+<div class="choix">
+	<form action="" method="post">
+		<input type="submit" name="produit+" value="Ajouter un produit">
+		<input type="submit" name="produit-" value="Supprimer ou modifier un produit">
+	</form>
+</div>
 
 
 
@@ -126,7 +127,9 @@ if(isset($_POST['supprimer']))
 				<label>Largeur :</label>
 				<input name="largeur" required type="number" value="200">
 			</div>
-			<input type="submit" name="ajout_produit">
+			<div class="choix">
+				<input type="submit" name="ajout_produit">
+			</div>
 		</form>
 	</div>
 	<?php
@@ -148,7 +151,9 @@ if(isset($_POST['supprimer']))
 					}	
 					?>
 				</select>
+					<div class="choix">
 						<input type="submit" name="nomproduit" value="Suivant">
+					</div>
 			</form>
 		</div>
 			<?php
@@ -199,7 +204,7 @@ if(isset($_POST['supprimer']))
 						<label>Largeur :</label>
 						<input name="largeur" required type="number" value="200">
 					</div>
-					<div class="submit">
+					<div class="choix">
 						<input type="submit" value="Modifier "name="modifier">
 						<input type="submit" value="Supprimer" name="supprimer">
 					</div>

@@ -310,6 +310,12 @@ class produit
 		
 	}
 
+	// function update($nom, $categorie, $sous_categorie, $description, $prix, $image, $hauteur, $largeur);
+	// {
+		
+
+	// }
+
 	function genererChaineAleatoire($longueur = 10)
 	{
 	 $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
