@@ -1,4 +1,3 @@
-
 <?php include("functions.php");
 include("header.php");
 
@@ -67,6 +66,15 @@ if(isset($_POST['supprimer']))
 
 
 ?>
+<html>
+	<head>
+		<title>Administration</title>
+		<link href="boutique.css" rel="stylesheet">
+		<meta charset="UTF-8">
+	</head>
+<body class="administration">
+
+
 <form action="" method="post">
 	<input type="submit" name="produit+" value="Ajouter un produit">
 	<input type="submit" name="produit-" value="Supprimer ou modifier un produit">
@@ -81,9 +89,12 @@ if(isset($_POST['supprimer']))
 	if(isset($_POST['produit+']))
 	{
 	?>
+	<div class="adminform">
 		<form action="" method="post" enctype="multipart/form-data">
+		<div class="form">
 			<input name="nom" required type="text" placeholder="Nom du Produit">
 			<input name="prix" required type="number" min="0.00" max="10000.00" step="0.01" placeholder="prix" />
+		</div>
 			<textarea name="description" required placeholder="description"></textarea>
 			<input type="file" name="fileToUpload" id="fileToUpload">
 
@@ -109,13 +120,15 @@ if(isset($_POST['supprimer']))
 				?>
 
 			</select>
-
-			<label>Hauteur :</label>
-			<input name="hauteur" required type="number" value="200">
-			<label>Largeur :</label>
-			<input name="largeur" required type="number" value="200">
+			<div class="taille">
+				<label>Hauteur :</label>
+				<input name="hauteur" required type="number" value="200">
+				<label>Largeur :</label>
+				<input name="largeur" required type="number" value="200">
+			</div>
 			<input type="submit" name="ajout_produit">
 		</form>
+	</div>
 	<?php
 	}
 	else if(isset($_POST['produit-']) || isset($_POST['nomproduit']))
@@ -123,6 +136,7 @@ if(isset($_POST['supprimer']))
 		if(!isset($_POST['nomproduit']))
 			{
 			?>
+		<div class="adminform2">
 			<form action="" method="post">	
 				<select name="nom">
 					
@@ -134,20 +148,26 @@ if(isset($_POST['supprimer']))
 					}	
 					?>
 				</select>
-						<input type="submit" name="nomproduit">
+						<input type="submit" name="nomproduit" value="Suivant">
 			</form>
+		</div>
 			<?php
 			}
 
 				if(isset($_POST['nomproduit']))
 				{
 				?>
+			<div class="adminform">
 				<form action="" method="post">
+				<div class="form">
 					<input name="nom" required type="text" placeholder="Nom du Produit" value="<?php echo $nomproduit[0][1];?>">
 					<input name="prix" required type="number" min="0.00" max="10000.00" step="0.01" placeholder="prix" value="<?php echo $nomproduit[0][5]; ?>"/>
+				</div>
 					<textarea name="description" required placeholder="description"><?php echo $nomproduit[0][4]; ?></textarea>
-					<input type="text" disabled="true" name="chemin" value="<?php echo $nomproduit[1][2];?>">
-					<input required type="file" id="avatar" name="image" accept="image/png, image/jpeg">
+					<label>Image actuelle :</label>
+					<img width="120px" src="<?php echo $nomproduit[1][2];?>">
+					<label>Changer image :</label>
+					<input  type="file" id="avatar" name="image" accept="image/png, image/jpeg">
 
 					<select name="categorie">
 
@@ -173,18 +193,26 @@ if(isset($_POST['supprimer']))
 
 					</select>
 
-					<label>Hauteur :</label>
-					<input name="hauteur" required type="number" value="200">
-					<label>Largeur :</label>
-					<input name="largeur" required type="number" value="200">
-					<input type="submit" value="Modifier "name="modifier">
-					<input type="submit" value="Supprimer" name="supprimer">
+					<div class="taille">
+						<label>Hauteur :</label>
+						<input name="hauteur" required type="number" value="200">
+						<label>Largeur :</label>
+						<input name="largeur" required type="number" value="200">
+					</div>
+					<div class="submit">
+						<input type="submit" value="Modifier "name="modifier">
+						<input type="submit" value="Supprimer" name="supprimer">
+					</div>
 				<?php
 				}
 				?>
 		</form>
+	</div>
 	<?php
 	}
 
 
 include("footer.php");?>
+
+</body>
+</html>

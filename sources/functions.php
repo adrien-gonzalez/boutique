@@ -321,11 +321,6 @@ class produit
 	 }
 	 return $chaineAleatoire;
 	}
-
-
-
-
-
 	
 }
 
