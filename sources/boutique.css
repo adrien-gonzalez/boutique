@@ -6,12 +6,101 @@ margin: 0;
 outline: none;
 font-family: 'Concert One' ;
 
+}
+
+body{
+  background-image: url('../img/fond_site.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.administration .adminform form{
+display: flex;
+width: 40%;
+flex-direction: column;
+background-color:rgba(255, 255, 255, 0.5);
+padding: 10px;
+align-items: center;
+justify-content: space-between;
+height: 900px;
 
 }
-body{
-	background-image: url('../img/fond_site.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
+
+.taille{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.administration .adminform textarea{
+
+width: 80%;
+height: 300px;
+resize:none;
+
+}
+
+.form{
+  width: 70%;
+}
+
+.administration .adminform form input[type="text"],input[type="file"], select {
+
+width: 70%;
+padding: 10px;
+border:1px solid white;
+
+}
+
+.administration form input[type="submit"]{
+  padding: 10px;
+  background-color: #F5B041;
+  color: white;
+  transition: 0.5s;
+  border:none;
+}
+
+.administration form input[type="submit"]:hover{
+background-color: #273746 ;
+}
+
+.administration .adminform form input[type="number"]{
+  width: 20%;
+  padding: 10px;
+}
+
+.administration form input[type="text"]:focus,
+input[type="file"]:focus,
+textarea:focus{
+
+  border-color: #129FEA;
+}
+
+.adminform{
+width: 100%;
+display: flex;
+justify-content: center;
+
+}
+
+.adminform2{
+width: 100%;
+display: flex;
+justify-content: center;
+height: 100px;
+
+}
+
+.administration .adminform2 form{
+display: flex;
+width: 30%;
+flex-direction: column;
+background-color:rgba(255, 255, 255, 0.5);
+padding: 10px;
+align-items: center;
+justify-content: space-between;
+
 }
 
 footer{
@@ -269,6 +358,55 @@ color: #F5B041 ;
   transition: 0.2s;
 }
 
+
+
+
+.sous_categorie{
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20%;
+}
+
+.sous_categorie div{
+
+display:flex;
+justify-content: space-between;
+width: 45%;
+
+}
+
+@media (max-width: 1350px) {
+  .sous_categorie div{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sous_categorie {
+
+    height: 700px;
+  }
+
+}
+
+
+.disconnect input[type="submit"]{
+
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.disconnect input[type="submit"]:hover{
+
+  color: #F5B041;
+}
+
 #inscription{
 display:flex;
 justify-content: center;
@@ -352,48 +490,14 @@ justify-content: center;
 background-color: rgba(0, 0, 0, 0.61);
 
 }
-.sous_categorie{
 
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 20%;
+
+/* MENTIONS LEGALES */
+#bodymentionlegale{
+  background-color:blue;
 }
+#mentionlegale{
+  background-color:rgba(255, 255, 255, 0.58);
+  color: red;
 
-.sous_categorie div{
-
-display:flex;
-justify-content: space-between;
-width: 45%;
-
-}
-
-@media (max-width: 1350px) {
-  .sous_categorie div{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .sous_categorie {
-
-    height: 700px;
-  }
-
-}
-
-
-.disconnect input[type="submit"]{
-
-  border: none;
-  background-color: transparent;
-  color: white;
-  font-size: 16px;
-  transition: 0.2s;
-}
-
-.disconnect input[type="submit"]:hover{
-
-  color: #F5B041;
 }

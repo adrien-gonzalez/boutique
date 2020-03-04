@@ -1,6 +1,5 @@
 
 <!-- ------- PARTIE PHP - FONCTION REGISTER ------- -->
-
 <?php include("functions.php");
 
 
