@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 04 mars 2020 à 16:18
+-- Généré le :  jeu. 05 mars 2020 à 12:06
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -59,19 +59,6 @@ CREATE TABLE IF NOT EXISTS `commandes` (
   `id_utilisateur` int(11) NOT NULL,
   `id_produit` int(11) NOT NULL,
   `id_image` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `grade`
---
-
-DROP TABLE IF EXISTS `grade`;
-CREATE TABLE IF NOT EXISTS `grade` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -165,15 +152,17 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `prenom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `grade` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT DELAYED INTO `utilisateurs` (`id`, `login`, `nom`, `prenom`, `email`, `password`) VALUES
-(12, 'Firefou', 'Gonzalez', 'Adrien', 'adrien1361@hotmail.fr', '$2y$12$R9bvoYGcnfMF49LCUuzD1.0DdvWkNRapF5HgecrmRhz0Ec0gYHHWO');
+INSERT DELAYED INTO `utilisateurs` (`id`, `login`, `nom`, `prenom`, `email`, `password`, `grade`) VALUES
+(12, 'Firefou', 'Gonzalez', 'Adrien', 'adrien1361@hotmail.fr', '$2y$12$R9bvoYGcnfMF49LCUuzD1.0DdvWkNRapF5HgecrmRhz0Ec0gYHHWO', 'utilisateur'),
+(15, 'admin', 'admin', 'admin', 'admin@gmail.com', '$2y$12$ihiKI19eh6qc.jIXzhb.G.nNa6R3FyGEGv6ooDVyM30ucW0ZMtl/W', 'admin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
