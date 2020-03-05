@@ -15,7 +15,10 @@ class userpdo
 	public 	$email;
 	public 	$password;
 	public 	$password2;
-	public $base;
+	public  $grade;
+
+
+		
 	
 function connectdb()
 	{
@@ -45,7 +48,7 @@ public function register($login, $nom, $prenom, $email, $password, $password2)
 			if($etat== 0)
 			{ 
 				$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);	
-				$requser =  $this->connectdb()->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash')");
+				$requser =  $this->connectdb()->query("INSERT INTO utilisateurs VALUES(NULL, '$login', '$nom', '$prenom','$email','$hash','utilisateur')");
 				$msg="ok";
 			}
 			else
@@ -71,6 +74,7 @@ public function connect($login, $password)
 			$this->prenom=$donnees['prenom'];
 			$this->email=$donnees['email'];
 			$this->password=$donnees['password'];
+			$this->grade=$donnees['grade'];
 		
 			$_SESSION['login']=$login;
 			$_SESSION['password']=$password;
@@ -132,13 +136,15 @@ public function getAllInfos()
 {
 	if(isset($_SESSION['login']))
 	{
+		// $tab=[];
+		// $login=$_SESSION['login'];
+		// $infos =  $this->connectdb()->query("SELECT *FROM utilisateurs WHERE login='$login'");
 		
-		$tab=array($this->login,
-		$this->nom,
-		$this->prenom,
-		$this->email,
-		$this->password);
-		return $tab;
+		// while($parameter = $infos->fetch())
+		// {
+		// 	array_push($tab, $parameter);
+		// }
+		return array($this->login, $this->nom, $this->prenom, $this->email, $this->password, $this->grade);
     }
     else
     {
@@ -320,6 +326,20 @@ class produit
 		header('Location: administration.php');
 	}
 
+	public function descriptionproduit()
+	{
+		if(isset($_GET['id']))
+		{
+		$id=$_GET['id'];
+		$description = $this->connectdb()->query("SELECT chemin, nom, description, prix FROM images, produits WHERE produits.id='$id' and id_produits='$id'");
+
+		return($resultat = $description -> fetch());	
+		}
+		else
+		{
+			header('Location: index.php');
+		}
+	}
 
 	function genererChaineAleatoire($longueur = 10)
 	{

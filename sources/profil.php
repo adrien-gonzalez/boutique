@@ -17,7 +17,6 @@ if(isset($_POST['update']))
 }
 
 $user = new userpdo;
-$user->refresh();
 $user->connect($_SESSION['login'], $_SESSION['password']);
 $monprofil=$user->getAllInfos();
 

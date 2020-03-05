@@ -90,6 +90,8 @@ width: 100%;
 display: flex;
 justify-content: center;
 height: 100px;
+margin-bottom: 20%;
+margin-top: 10%;
 
 }
 
@@ -111,6 +113,7 @@ width: 100%;
 background-color: #F5B041;
 margin-top: 5%;
 height: 180px;
+
 }
 
 footer,p, h3, .categorie a, a{
@@ -489,5 +492,42 @@ justify-content: center;
 
 .hover_produits:hover{
 background-color: rgba(0, 0, 0, 0.61);
+
+}
+
+.image_produit{
+
+  display: flex;
+  justify-content: center;
+  flex:1;
+}
+.infos_produit{
+background-color: rgba(255, 255, 255, 0.63);
+display: flex;
+margin-top: 10%;
+justify-content: space-between;
+
+}
+
+.nom_produit{
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.nom_produit h1{
+  font-size: 25px;
+}
+
+.description_produit{
+width: 70%;
+margin-top: 5%;
+}
+
+.detail_produit{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  flex:2;
 
 }

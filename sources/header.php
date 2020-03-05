@@ -12,15 +12,14 @@
 <?php
 
 $produit = new produit;
+$user = new userpdo;
 $produit -> categorie();
 $produit -> sous_categorie();
 
 
 if(isset($_POST['deco']))
 {
-  $user = new userpdo;
   $user->disconnect();
-
 } 
 ?>
 
@@ -65,7 +64,21 @@ if(isset($_POST['deco']))
           </li>
           <li>
             <a class="menu" href="commandes.php">Mes commandes</a>
-          </li>  
+          </li>
+
+          <?php 
+          $user->connect($_SESSION['login'], $_SESSION['password']);
+          $monprofil=$user->getAllInfos();
+          if($monprofil[5] == "admin")
+          {
+          ?>
+          <li>
+            <a class="menu" href="administration.php">Administration</a>
+          </li> 
+          <?php
+          }
+          ?>
+
         </ul>
    </li>
    <li>
