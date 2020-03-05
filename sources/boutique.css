@@ -123,7 +123,7 @@ text-decoration: none;
 transition: 0.2s;
 }
 
-footer a:hover{
+footer a:hover, .categorie a:hover{
 	color:#2C3E50;
 }
 
