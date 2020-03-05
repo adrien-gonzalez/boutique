@@ -120,6 +120,7 @@ footer,p, h3, .categorie a, a{
 
 color:white;
 text-decoration: none;
+transition: 0.2s;
 }
 
 footer a:hover{
@@ -495,18 +496,22 @@ background-color: rgba(0, 0, 0, 0.61);
 
 }
 
+/*DESCRIPTION*/
+
+.infos_produit{
+background-color: rgba(255, 255, 255, 0.63);
+display: flex;
+margin-top: 10%;
+margin-bottom: 10%;
+justify-content: space-between;
+
+}
+
 .image_produit{
 
   display: flex;
   justify-content: center;
   flex:1;
-}
-.infos_produit{
-background-color: rgba(255, 255, 255, 0.63);
-display: flex;
-margin-top: 10%;
-justify-content: space-between;
-
 }
 
 .nom_produit{
@@ -530,4 +535,36 @@ margin-top: 5%;
   justify-content: center;
   flex:2;
 
+}
+
+/*DESCRIPTION*/
+
+/*DERNIER AJOUT*/
+
+.dernier_ajout{
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.63); 
+}
+
+.accueil h1{
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.63); 
+  width: 100%;
+  height: 80px;
+  margin-top: 10%;
+}
+
+.dernier_ajout div{
+display:flex;
+flex-direction: column;
+
+}
+
+.dernier_ajout h2{
+
+  text-align: center;
+  margin-bottom: 10px;
 }

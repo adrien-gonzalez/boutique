@@ -136,15 +136,16 @@ public function getAllInfos()
 {
 	if(isset($_SESSION['login']))
 	{
-		// $tab=[];
-		// $login=$_SESSION['login'];
-		// $infos =  $this->connectdb()->query("SELECT *FROM utilisateurs WHERE login='$login'");
+		$tab=[];
+		$login=$_SESSION['login'];
+		$infos =  $this->connectdb()->query("SELECT *FROM utilisateurs WHERE login='$login'");
 		
-		// while($parameter = $infos->fetch())
-		// {
-		// 	array_push($tab, $parameter);
-		// }
-		return array($this->login, $this->nom, $this->prenom, $this->email, $this->password, $this->grade);
+		while($parameter = $infos->fetch())
+		{
+			array_push($tab, $parameter);
+		}
+		
+		return $tab;
     }
     else
     {
@@ -339,6 +340,19 @@ class produit
 		{
 			header('Location: index.php');
 		}
+	}
+
+	public function nouveautees()
+	{
+		$tab=[];
+		$ajout=$this->connectdb()->query("SELECT chemin, nom, produits.id FROM produits, images WHERE produits.id=id_produits ORDER BY produits.id DESC ");
+
+		while($dernier_ajout = $ajout -> fetch())
+		{
+			array_push($tab, $dernier_ajout);
+		}
+
+		return $tab;
 	}
 
 	function genererChaineAleatoire($longueur = 10)

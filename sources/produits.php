@@ -11,16 +11,18 @@ $produit= new produit();
 
 $image=$produit -> images();
 
+if(!isset($_GET['id']))
+{
+	header('Location: index.php');
+}
+
 if(!isset($_GET['id2']))
 {
 	$type="?type=".$_GET['type'];
 	$id="&id=".$_GET['id'];
 	header('Location: sous-categorie.php'.$type.''.$id);
 }
-else if(!isset($_GET['id']))
-{
-	header('Location: index.php');
-}
+
 
 for($i=0; $i < sizeof($image); $i++)
 {

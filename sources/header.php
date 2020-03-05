@@ -67,9 +67,8 @@ if(isset($_POST['deco']))
           </li>
 
           <?php 
-          $user->connect($_SESSION['login'], $_SESSION['password']);
           $monprofil=$user->getAllInfos();
-          if($monprofil[5] == "admin")
+          if($monprofil[0][6] == "admin")
           {
           ?>
           <li>
