@@ -463,7 +463,6 @@ class panier
 			array_push($tab, $produits);
 		}
 
-
 		for($i=0; $i < sizeof($tab); $i++)
 		{
 			$id_utilisateur=$tab[$i][1];
@@ -471,7 +470,7 @@ class panier
 			$quantite=$tab[$i][3];
 			$prix=$tab[$i][4];
 
-			$achat=$this->connectdb()->query("INSERT INTO commande VALUES(NULL, '$id_utilisateur', '$id_produits', '$quantite', '$prix')");
+			$achat=$this->connectdb()->query("INSERT INTO commande (id_utilisateur, id_produits, quantité, prix) VALUES('$id_utilisateur', '$id_produits', '$quantite', '$prix')");
 		}
 
 		$delete=$this->connectdb()->query("DELETE FROM panier WHERE id_utilisateur='$utilisateur'");
