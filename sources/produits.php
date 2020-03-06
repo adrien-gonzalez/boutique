@@ -11,6 +11,8 @@ $produit= new produit();
 
 $image=$produit -> images();
 
+
+
 if(!isset($_GET['id']))
 {
 	header('Location: index.php');
@@ -26,7 +28,7 @@ if(!isset($_GET['id2']))
 
 for($i=0; $i < sizeof($image); $i++)
 {
-if($_GET['id']== $image[$i][0] && $_GET['id2']==  $image[$i][1])
+if($_GET['id']== $image[$i][1] && $_GET['id2']==  $image[$i][0])
 {
 ?>
 <div class="hover_produits">

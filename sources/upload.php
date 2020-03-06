@@ -14,17 +14,18 @@
 
 	    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 	    if($check !== false) {
-	        echo "File is an image - " . $check["mime"] . ".";
+	        echo "Le fichier est une image - " . $check["mime"] . ".";
 	        $uploadOk = 1;
+	        echo '<br>';
 	    } else {
-	        echo "File is not an image.";
+	        echo "Le fichier n'est pas une image.";
 	        $uploadOk = 0;
 	    }
 
 	    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
- 	       echo "The file ". basename($name). " has been uploaded.";
+ 	       echo "Le fichier ". basename($name). " a bien été upload.";
  	   } else {
- 	       echo "Sorry, there was an error uploading your file.";
+ 	       echo "Désolé, il y a eu une erreur dans l'upload de votre fichier.";
  	   }
 
  	   $chemin="../img/".$name;

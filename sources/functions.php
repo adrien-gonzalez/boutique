@@ -291,7 +291,6 @@ class produit
 		{
 			array_push($tabproduit, $num);
 		}
-		// $this->tabimages=$tabimages;
 		return $tabproduit;
 	}
 
@@ -324,6 +323,17 @@ class produit
 
 		$updateimg= $this->connectdb()->query("UPDATE images SET chemin='$image', hauteur='$hauteur', largeur='$largeur' WHERE id_produits='$id'");
 		
+		header('Location: administration.php');
+	}
+
+	public function delete($id)
+	{
+		$del=$this->connectdb()->query("DELETE FROM produits WHERE id='$id'");
+		$del2=$this->connectdb()->query("DELETE FROM images WHERE id_produits='$id'");
+		
+		$handle=opendir("../img/");	
+		unlink($_POST['chemin']);
+
 		header('Location: administration.php');
 	}
 
@@ -367,6 +377,69 @@ class produit
 	 return $chaineAleatoire;
 	}
 	
+}
+
+
+class panier
+{
+
+	function connectdb()
+	{
+	   
+		try {
+			$base = new PDO('mysql:host=localhost;dbname=boutique', 'root', '',
+				array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
+		} catch (PDOException $e) {
+		    echo 'Connexion échouée : ' . $e->getMessage();
+		}
+		return $base;
+	}
+
+	public function insert_panier($id, $quantite, $prix)
+	{
+		if(isset($_SESSION['login']))
+		{
+			$login=$_SESSION['login'];
+			$id_user=$this->connectdb()->query("SELECT id FROM utilisateurs where login='$login'");
+			$user = $id_user->fetch(PDO::FETCH_ASSOC);
+
+
+			$utilisateur=$user['id'];
+			$panier=$this->connectdb()->query("INSERT INTO panier VALUES(NULL, '$utilisateur','$id', '$quantite','$prix')");
+			header('Location: panier.php');
+		}
+		else
+		{
+			header('Location: connexion.php');
+		}
+		
+	}
+
+	public function select_panier()
+	{
+		$tabpanier=[];
+
+		$login=$_SESSION['login'];
+		$id_user=$this->connectdb()->query("SELECT id FROM utilisateurs where login='$login'");
+		$user = $id_user->fetch(PDO::FETCH_ASSOC);
+
+		$utilisateur=$user['id'];
+		$monpanier=$this->connectdb()->query("SELECT *FROM panier, images, produits WHERE id_utilisateur='$utilisateur' and panier.id_produits=images.id_produits and panier.id_produits=produits.id ORDER BY panier.id ASC");
+		
+
+		while($affichage_panier=$monpanier ->fetch())
+		{
+			array_push($tabpanier, $affichage_panier);
+
+		}
+		return $tabpanier;
+	}
+
+
+
+
+
+
 }
 
 ?>

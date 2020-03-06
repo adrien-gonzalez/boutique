@@ -112,7 +112,6 @@ justify-content: space-between;
 width: 100%;
 background-color: #F5B041;
 margin-top: 5%;
-height: 180px;
 
 }
 
@@ -397,6 +396,26 @@ width: 45%;
 
 }
 
+@media (max-width: 1150px) {
+ .infos_produit{
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .detail_produit{
+    display: flex;
+    justify-content: flex-end;
+     width: 100%;
+     align-items: center;
+  }
+  .nom_produit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
 
 .disconnect input[type="submit"]{
 
@@ -517,7 +536,7 @@ justify-content: space-between;
 .nom_produit{
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  width: auto;
 }
 
 .nom_produit h1{
@@ -568,3 +587,84 @@ flex-direction: column;
   text-align: center;
   margin-bottom: 10px;
 }
+
+
+.uplodad{
+  text-align:center;
+  color:white;
+}
+
+.ajout_panier{
+display: flex;
+align-items: flex-end;
+}
+
+.infos_produit .ajout_panier form input[type="number"]{
+
+height: 50%;
+width: 50px;
+}
+
+.infos_produit .ajout_panier form input[type="submit"]{
+
+width: 50px;
+height: 50px;
+background-image: url("../img/logo_panier.png");
+background-size: cover;
+background-color: transparent;
+border:none;
+}
+
+
+.ajout_panier form{
+display: flex;
+align-items: center;
+width: 210px;
+justify-content: space-between;
+
+}
+.ajout_panier div{
+  display: flex;
+  width: 130px;
+  justify-content: space-between;
+}
+
+.infos_panier{
+
+  display:flex;
+  justify-content: center;
+  width:100%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.infos_panier table{
+
+  background-color: rgba(255, 255, 255, 0.63); 
+  width: 70%;
+  padding: 20px;
+}
+
+.infos_panier table tr{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid;
+}
+
+.prix_total{
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prix_total div{
+  width: 20%;
+  background-color: rgba(255, 255, 255, 0.63); 
+  text-align: center;
+  font-size: 20px;
+}
+
+
+

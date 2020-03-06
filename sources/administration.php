@@ -29,13 +29,18 @@ if(isset($_POST['modifier']))
 
 if(isset($_POST['ajout_produit']))
 {
-	include("upload.php");
+	?>
+	<div class="uplodad">
+		<?php include("upload.php");?>
+	</div>
+	<?php
 	
 	$chemin="../img/".$name;
 	$_POST['image']= $chemin;
 	
 	
 	$produit ->insert_produits($_POST['nom'], $_POST['categorie'], $_POST['sous_categorie'], $_POST['description'], $_POST['prix'],$_POST['image'], $_POST['hauteur'], $_POST['largeur']);
+
 }
 
 if(isset($_GET['action']))
@@ -45,7 +50,7 @@ if(isset($_GET['action']))
 
 if(isset($_POST['supprimer']))
 {
-	echo $_POST['chemin'];	
+	$produit -> delete($_POST['id']);	
 }
 
 
@@ -84,7 +89,7 @@ if(isset($_POST['supprimer']))
 			<input name="prix" required type="number" min="0.00" max="10000.00" step="0.01" placeholder="prix" />
 		</div>
 			<textarea name="description" required placeholder="description"></textarea>
-			<input type="file" name="fileToUpload" id="fileToUpload">
+			<input required type="file" name="fileToUpload" id="fileToUpload">
 
 			<select name="categorie">
 				<?php 
