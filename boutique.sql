@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 05 mars 2020 à 12:06
+-- Généré le :  ven. 06 mars 2020 à 17:56
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -50,21 +50,6 @@ INSERT DELAYED INTO `categorie` (`id`, `nom`, `nomurl`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commandes`
---
-
-DROP TABLE IF EXISTS `commandes`;
-CREATE TABLE IF NOT EXISTS `commandes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_utilisateur` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
-  `id_image` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `images`
 --
 
@@ -76,16 +61,40 @@ CREATE TABLE IF NOT EXISTS `images` (
   `hauteur` int(11) NOT NULL,
   `largeur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `images`
 --
 
 INSERT DELAYED INTO `images` (`id`, `id_produits`, `chemin`, `hauteur`, `largeur`) VALUES
-(36, 39, '../img/BOrbQEBdeH.jpg', 200, 200),
-(34, 37, '../img/MBUQm0jKEG.jpg', 200, 200),
-(35, 38, '../img/iZEhN5eufX.jpg', 200, 200);
+(41, 44, '../img/UvLTIBDP4m.jpg', 200, 200),
+(42, 45, '../img/ETUy6WVeNH.jpg', 200, 200),
+(43, 46, '../img/f49Qoh7Xnc.jpg', 200, 200);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `panier`
+--
+
+DROP TABLE IF EXISTS `panier`;
+CREATE TABLE IF NOT EXISTS `panier` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int(11) NOT NULL,
+  `id_produits` int(11) NOT NULL,
+  `quantité` int(11) NOT NULL,
+  `prix` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT DELAYED INTO `panier` (`id`, `id_utilisateur`, `id_produits`, `quantité`, `prix`) VALUES
+(17, 12, 45, 1, 835),
+(16, 12, 46, 2, 1500);
 
 -- --------------------------------------------------------
 
@@ -102,16 +111,16 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `description` text NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
 INSERT DELAYED INTO `produits` (`id`, `nom`, `id_categorie`, `id_sous_categorie`, `description`, `prix`) VALUES
-(37, 'HP Pavillon Gaming', 1, 1, 'Equipé d\'un processeur AMD Ryzen™ 5 3550H (2,1 GHz / 3,7 GHz Boost - Quad-Core) et de 16 Go de mémoire vive DDR4-2400, le pc portable HP Pavilion Gaming 15 vous offre une puissance de traitement efficace pour une utilisation multimédia optimale. Son écran Full HD IPS 144Hz de 15,6 pouces à micro-bords (dalle mate) et sa carte graphique NVIDIA GeForce GTX 1650 4 Go vous délivrent un véritable confort visuel pour jouer à tous vos jeux vidéo préférés.', 700),
-(38, 'HP Obelisk', 1, 1, 'Windows 10 Famille 64\r\nProcesseur Intel® Core™ i5-9400F\r\n8 Go de mémoire HyperX® SDRAM\r\n1 To de stockage + 128 Go SSD\r\nCarte graphique NVIDIA® GeForce® GTX 1650 (4 Go de mémoire GDDR5 dédiée)\r\nChassis vitré. Qualité audio DTS Studio Sound™. Solution de refroidissement par air pour processeur.', 950),
-(39, 'HP Omen 15', 1, 1, 'Ecran : Full HD IPS anti-reflets micro-bords à rétroéclairage WLED de 39,6 cm (15,6\") de diagonale (1 920 x 1 080). Type d\'alimentation: Adaptateur secteur 150 W\r\nStockage et mémoire : 8 Go de RAM, Hybride (Disque Dur + SSD) 1000 Go + 128 Go\r\nProcesseur : Intel Core i5-8300H (2,3 GHz de fréquence de base, jusqu’à 4 GHz avec technologie Intel Turbo Boost, 8 Mo de mémoire cache, 4 cœurs)\r\nCarte Graphique : Carte NVIDIA GeForce GTX 1050 Ti (4 Go de mémoire GDDR5 dédiée)\r\nConnectivité : 1 port USB 3.1 Type-C ; 3 ports USB 3.1 Gen 1 ; 1 port HDMI\r\nLa vie de la batterie mixé utilisation: Jusqu\'à 6 heures et 15 minutes', 900);
+(46, 'HP Obelisk', 1, 1, 'Le PC de HP est équipé d’un processeur Intel Core i7-9700F et de 16 Go de RAM SSDRAM DDR4. D’un point de vue stockage, il est équipé d\'un disque dur de 1 To et d\'un SSD de 128 Go . Vous pouvez aisément sauvegarder des fichiers lourds sans vous demander s’il y a assez de place dans le PC. L’ordinateur de HP vous procure une connectivité WiFi  mais il possède également un port Ethernet pour une connexion filaire. En toute situation, pour répondre à vos besoins divers, il est équipé de 8 x USB 3.1 afin de pouvoir connecter vos périphériques externes.', 1500),
+(45, 'HP Pavillon Gaming', 1, 1, 'Ecran FHD IPS anti-reflets micro-bords à rétroéclairage WLED (1920 x 1080px)\r\nProcesseur Intel Core i5-9300H 4 cœurs\r\nMémoire vive 8 Go SDRAM DDR4\r\nHDD 1 To + SSD 128 Go\r\nNvidia GeForce GTX 1650\r\nSystème d\'exploitation Windows 10\r\nClavier AZERTY avec pavé numérique\r\nWebcam avec microphone\r\nJusqu\'à 10h30 d\'autonomie', 835),
+(44, 'HP Omen 15', 1, 1, 'Ecran : Full HD IPS anti-reflets micro-bords à rétroéclairage WLED de 39,6 cm (15,6\") de diagonale (1 920 x 1 080). Type d\'alimentation: Adaptateur secteur 150 W\r\nStockage et mémoire : 8 Go de RAM, Hybride (Disque Dur + SSD) 1000 Go + 128 Go\r\nProcesseur : Intel Core i5-8300H (2,3 GHz de fréquence de base, jusqu’à 4 GHz avec technologie Intel Turbo Boost, 8 Mo de mémoire cache, 4 cœurs)\r\nCarte Graphique : Carte NVIDIA GeForce GTX 1050 Ti (4 Go de mémoire GDDR5 dédiée)\r\nConnectivité : 1 port USB 3.1 Type-C ; 3 ports USB 3.1 Gen 1 ; 1 port HDMI\r\nLa vie de la batterie mixé utilisation: Jusqu\'à 6 heures et 15 minutes', 750);
 
 -- --------------------------------------------------------
 
