@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 06 mars 2020 à 17:56
+-- Généré le :  ven. 06 mars 2020 à 20:33
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -50,6 +50,30 @@ INSERT DELAYED INTO `categorie` (`id`, `nom`, `nomurl`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `commande`
+--
+
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int(11) NOT NULL,
+  `id_produits` int(11) NOT NULL,
+  `quantité` int(11) NOT NULL,
+  `prix` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT DELAYED INTO `commande` (`id`, `id_utilisateur`, `id_produits`, `quantité`, `prix`, `date`) VALUES
+(2, 15, 46, 1, 1500, '2020-03-06 20:57:08');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `images`
 --
 
@@ -86,15 +110,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `quantité` int(11) NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `panier`
---
-
-INSERT DELAYED INTO `panier` (`id`, `id_utilisateur`, `id_produits`, `quantité`, `prix`) VALUES
-(17, 12, 45, 1, 835),
-(16, 12, 46, 2, 1500);
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
