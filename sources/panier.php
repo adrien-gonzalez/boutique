@@ -18,61 +18,81 @@
 
 	if(isset($_POST['suppr']))
 	{
-		$panier = new panier;
 		$panier ->delete($_POST['produit']);
+	}
+	if(isset($_POST['valider']))
+	{
+		$panier->achat();
 	}
 
 	
 	$monpanier=$panier ->  select_panier(); ?>
 
-
-
-
-<div class="infos_panier">
-	<table>
-			<tr>
-				<th>Image produit</th>
-				<th>Nom du produit</th>
-				<th>Quantité</th>
-				<th>Prix</th>
-				<th>Supprimer</th>
-			</tr>
-
-		<?php
-		$a=0;
-		for($i=0; $i < sizeof($monpanier); $i++)
-		{
-			?>
-			<tr>
-				<!-- Image produit -->
-				<td><img width="80px" src="<?php echo $monpanier[$i][7];?>"></td>
-				<!-- Nom du produi -->
-				<td><?php echo $monpanier[$i][11];?></td>
-				<!-- Quantité produit -->
-				<td><?php echo $monpanier[$i][3];?></td>
-				<!-- Prix -->
-				<td><?php echo $monpanier[$i][4]*$monpanier[$i][3]. " €";?></td>
-				<!-- Calcul prix total du panier -->
-				<?php $a=$a+$monpanier[$i][4]*$monpanier[$i][3];?>
-				<!-- Supprimer élément -->
-				<td>
-					<form class="corbeille" method="post" action="">
-						<input type="hidden" name="produit" value="<?php echo $monpanier[$i]['id']; ?>">
-						<input type="submit" value="" name="suppr">
-					</form>
-				</td>
-			</tr>
-		<?php
-		}
-		?>
-	</table>
-</div>
-<div class="prix_total">
-	<div>
-		<?php echo "Prix total : ".$a. " €"; ?>
+<?php 
+if(sizeof($monpanier) == 0)
+{
+?>
+	<h1 class="panier_vide">Oopss, votre panier est vide !</h1>
+	<div class="image_bonhomme">
+		<img width="300px;" src="../img/bonhomme.png">
 	</div>
-</div>
+<?php
+}
+else
+{
+?>
+	<div class="infos_panier">
+		<table>
+				<tr>
+					<th>Image produit</th>
+					<th>Nom du produit</th>
+					<th>Quantité</th>
+					<th>Prix</th>
+					<th>Supprimer</th>
+				</tr>
 
-		<?php include("footer.php");?>
+			<?php
+			$a=0;
+			$tab_panier=[];
+			for($i=0; $i < sizeof($monpanier); $i++)
+			{
+				?>
+				<tr>
+					<!-- Image produit -->
+					<td><img width="80px" src="<?php echo $monpanier[$i][7];?>"></td>
+					<!-- Nom du produi -->
+					<td><?php echo $monpanier[$i][11];?></td>
+					<!-- Quantité produit -->
+					<td><?php echo $monpanier[$i][3];?></td>
+					<!-- Prix -->
+					<td><?php echo $monpanier[$i][4]*$monpanier[$i][3]. " €";?></td>
+					<!-- Calcul prix total du panier -->
+					<?php $a=$a+$monpanier[$i][4]*$monpanier[$i][3];?>
+					<!-- Supprimer élément -->
+					<td>
+						<form class="corbeille" method="post" action="">
+							<input type="hidden" name="produit" value="<?php echo $monpanier[$i]['id']; ?>">
+							<input type="submit" value="" name="suppr">
+						</form>
+					</td>
+				</tr>
+			<?php
+			}
+			?>
+		</table>
+	</div>
+	<div class="prix_total">
+		<div class="valid_panier">
+			<div><?php echo "Prix total : ".$a. " €"; ?></div>
+			<form method="post" action="">
+				<input type="submit" name="valider" value="Valider mon panier">
+			</form>
+		</div>
+	</div>
+<?php
+}
+
+
+	include("footer.php");?>
 </body>
 </html>

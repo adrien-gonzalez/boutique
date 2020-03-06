@@ -63,7 +63,7 @@ if(isset($_POST['deco']))
             <a class="menu" href="profil.php">Mon profil</a>
           </li>
           <li>
-            <a class="menu" href="commandes.php">Mes commandes</a>
+            <a class="menu" href="commande.php">Mes commandes</a>
           </li>
 
           <?php 

@@ -380,6 +380,11 @@ class produit
 }
 
 
+
+
+// PANIER
+
+
 class panier
 {
 
@@ -439,7 +444,59 @@ class panier
 	{
 
 		$delete=$this->connectdb()->query("DELETE FROM panier WHERE id_produits='$id' ORDER by id ASC");
+
+	}
+
+	public function achat()
+	{
+		$login=$_SESSION['login'];
+		$id_user=$this->connectdb()->query("SELECT id FROM utilisateurs where login='$login'");
+		$user = $id_user->fetch(PDO::FETCH_ASSOC);
+
+		$utilisateur=$user['id'];
+		$produits_panier=$this->connectdb()->query("SELECT *FROM panier WHERE id_utilisateur='$utilisateur'");
 		
+		$tab=[];
+
+		while($produits = $produits_panier -> fetch())
+		{
+			array_push($tab, $produits);
+		}
+
+
+		for($i=0; $i < sizeof($tab); $i++)
+		{
+			$id_utilisateur=$tab[$i][1];
+			$id_produits=$tab[$i][2];
+			$quantite=$tab[$i][3];
+			$prix=$tab[$i][4];
+
+			$achat=$this->connectdb()->query("INSERT INTO commande VALUES(NULL, '$id_utilisateur', '$id_produits', '$quantite', '$prix')");
+		}
+
+		$delete=$this->connectdb()->query("DELETE FROM panier WHERE id_utilisateur='$utilisateur'");
+		
+	}
+
+	public function select_commande()
+	{
+
+		$tabcommande=[];
+		$login=$_SESSION['login'];
+		$id_user=$this->connectdb()->query("SELECT id FROM utilisateurs where login='$login'");
+		$user = $id_user->fetch(PDO::FETCH_ASSOC);
+
+		$utilisateur=$user['id'];
+		$macommande=$this->connectdb()->query("SELECT *FROM commande, images, produits WHERE id_utilisateur='$utilisateur' and commande.id_produits=images.id_produits and commande.id_produits=produits.id ORDER BY commande.id ASC");
+		
+
+		while($affichage_commande=$macommande ->fetch())
+		{
+			array_push($tabcommande, $affichage_commande);
+
+		}
+		return $tabcommande;
+
 	}
 
 
