@@ -84,7 +84,7 @@ if(isset($_POST['deco']))
       <a href="index.php"><div class="logohover"></div></a>      
    </li>
    <li>
-      <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
+      <a href="panier.php"><div class="logopanierhover"></div></a>
   </li>
   <li>
       <form class="disconnect" method="post" action="" >

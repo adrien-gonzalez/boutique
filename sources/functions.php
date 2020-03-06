@@ -435,6 +435,13 @@ class panier
 		return $tabpanier;
 	}
 
+	public function delete($id)
+	{
+
+		$delete=$this->connectdb()->query("DELETE FROM panier WHERE id_produits='$id' ORDER by id ASC");
+		
+	}
+
 
 
 

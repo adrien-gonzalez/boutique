@@ -354,9 +354,23 @@ color: #F5B041 ;
   transition: 0.2s;
 }
 
+
+
 .logoprofilhover:hover{
-  height: 35px;
   background-image:url(../img/logo_profilhover.png);
+}
+
+.logopanierhover{
+  height: 35px;
+  background-image:url(../img/logo_panier.png);
+  background-size: 35px;
+  width: 35px;
+  transition: 0.2s;
+}
+
+.logopanierhover:hover{
+  height: 35px;
+  background-image:url(../img/logo_panierhover.png);
   background-size: 35px;
   width: 35px;
   transition: 0.2s;
@@ -607,13 +621,21 @@ width: 50px;
 
 .infos_produit .ajout_panier form input[type="submit"]{
 
-width: 50px;
-height: 50px;
+width: 40px;
+height: 40px;
 background-image: url("../img/logo_panier.png");
 background-size: cover;
 background-color: transparent;
 border:none;
+transition: 0.5s;
+margin-right: 8px;
 }
+
+.infos_produit .ajout_panier form input[type="submit"]:hover{
+
+background-image: url("../img/logo_panierhover.png");
+}
+
 
 
 .ajout_panier form{
@@ -635,12 +657,12 @@ justify-content: space-between;
   justify-content: center;
   width:100%;
   margin-top: 10%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 
 .infos_panier table{
 
-  background-color: rgba(255, 255, 255, 0.63); 
+  background-color: rgba(255, 255, 255, 0.7); 
   width: 70%;
   padding: 20px;
 }
@@ -657,6 +679,7 @@ justify-content: space-between;
   width:100%;
   display: flex;
   justify-content: center;
+   margin-bottom: 10%;
 }
 
 .prix_total div{
@@ -664,6 +687,23 @@ justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.63); 
   text-align: center;
   font-size: 20px;
+}
+
+.corbeille input[type="submit"]{
+
+  width: 50px;
+  height: 50px;
+  background-image: url("../img/corbeille.png");
+  background-size: cover;
+  background-color: transparent;
+  border:none;
+  transition: 0.5s;
+}
+
+.corbeille input[type="submit"]:hover{
+
+  background-image: url("../img/corbeillehover.png");
+
 }
 
 
