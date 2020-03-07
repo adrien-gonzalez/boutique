@@ -1,7 +1,15 @@
-
 <?php include("functions.php");?> 
-<?php include("header.php");?>
 
+
+
+<html>
+	<head>
+		<title>Boutique</title>
+		<link href="boutique.css" rel="stylesheet">
+		<meta charset="UTF-8">
+	</head>
+<body>
+	<?php include("header.php");?>
 
 <div class="produits_encadrement">
 <p>Nos Produits</p>
@@ -13,31 +21,38 @@ $image=$produit -> images();
 
 
 
-if(!isset($_GET['id']))
+if(!isset($_GET['id']) && !isset($_GET['id2']))
 {
-	header('Location: index.php');
+
+	for($i=0; $i < sizeof($image); $i++)
+	{
+	?>
+		<div class="hover_produits">
+			<a href="description.php?id=<?php echo  $image[$i][2];?>"><img height="<?php echo $image[$i][5];?>" width="<?php echo $image[$i][6];?>" src="<?php echo $image[$i][8];?>"></a>
+		</div>
+	<?php
+	}
 }
-
-if(!isset($_GET['id2']))
+else
 {
-	$type="?type=".$_GET['type'];
-	$id="&id=".$_GET['id'];
-	header('Location: sous-categorie.php'.$type.''.$id);
+	for($i=0; $i < sizeof($image); $i++)
+	{
+	if($_GET['id']== $image[$i][1] && $_GET['id2']==  $image[$i][0])
+	{
+	?>
+	<div class="hover_produits">
+		<a href="description.php?id=<?php echo  $image[$i][2];?>"><img height="<?php echo $image[$i][5];?>" width="<?php echo $image[$i][6];?>" src="<?php echo $image[$i][8];?>"></a>
+	</div>
+	<?php
+	}
+	}
+
 }
-
-
-for($i=0; $i < sizeof($image); $i++)
-{
-if($_GET['id']== $image[$i][1] && $_GET['id2']==  $image[$i][0])
-{
 ?>
-<div class="hover_produits">
-	<a href="description.php?id=<?php echo  $image[$i][2];?>"><img height="<?php echo $image[$i][5];?>" width="<?php echo $image[$i][6];?>" src="<?php echo $image[$i][8];?>">
 </div>
-<?php
-}
-}
-?>
-</div>
+
 
 <?php include("footer.php");?>
+
+</body>
+</html>

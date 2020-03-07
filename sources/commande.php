@@ -8,10 +8,36 @@
 <body>
 	<?php include("header.php"); ?>
 
-	<?php 
+	<?php
+
 	$panier = new panier;
+	
+	if(isset($_POST['supprimer_commande']))
+	{
+		$panier -> delete_commande($_POST['produit_suppr']);
+	}
+
+	 
+	
 	$ma_commande=$panier ->select_commande();
-	?>
+	
+
+
+if(sizeof($ma_commande) == 0)
+{
+?>
+
+<div class="visite_boutique">
+	<h1>Aucune commande passée</h1>
+	<div>
+		<a href="produits.php"><button>Visitez notre boutique</button></a>
+	</div>
+</div>
+<?php
+}
+else
+{
+?>
 
 <div class="infos_commande">
 		<table>
@@ -22,6 +48,7 @@
 					<th>Prix</th>
 					<th>Date d'achat</th>
 					<th>Adresse de livraison</th>
+					<th>Annuler ma commande</th>
 				</tr>
 	<?php
 	$a=0;
@@ -46,6 +73,13 @@
 			</td>
 			<!-- Adresse de livraison -->
 			<td><?php echo $ma_commande[$i][6];?></td>
+			<!-- Supprimer élément -->
+			<td>
+				<form class="corbeille" method="post" action="">
+					<input type="hidden" name="produit_suppr" value="<?php echo $ma_commande[$i]['id']; ?>">
+					<input type="submit" value="" name="supprimer_commande">
+				</form>
+			</td>
 			<!-- Calcul prix total de la commande -->
 			<?php $a=$a+$ma_commande[$i][4]*$ma_commande[$i][3];?>
 		</tr>
@@ -57,6 +91,11 @@
 <div class="prix_commande">
 			<div><?php echo "Prix total : ".$a. " €"; ?></div>
 </div>
+
+<?php
+}
+?>
+
 
 	<?php include("footer.php");?>
 </body>

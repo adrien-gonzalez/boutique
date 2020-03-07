@@ -26,7 +26,7 @@ if(isset($_POST['deco']))
 <?php $tab=$produit -> categorie();?>
 <?php $tab1=$produit -> sous_categorie();?>
   <li>
-      <a class="menu" href="">Catégorie</a>
+      <a class="menu" href="produits.php">Boutique</a>
       <ul>
               <?php
               for($j=0; $j < sizeof($tab); $j++)

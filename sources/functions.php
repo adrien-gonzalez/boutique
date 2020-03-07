@@ -500,6 +500,13 @@ class panier
 
 	}
 
+	public function delete_commande($id)
+	{
+
+		$delete=$this->connectdb()->query("DELETE FROM commande WHERE id_produits='$id' ORDER by id ASC");
+
+	}
+
 
 
 
