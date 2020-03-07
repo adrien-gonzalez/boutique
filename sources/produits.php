@@ -20,7 +20,6 @@ $produit= new produit();
 $image=$produit -> images();
 
 
-
 if(!isset($_GET['id']) && !isset($_GET['id2']))
 {
 
@@ -32,6 +31,11 @@ if(!isset($_GET['id']) && !isset($_GET['id2']))
 		</div>
 	<?php
 	}
+}
+else if(!isset($_GET['id']) || !isset($_GET['id2']))
+{
+	header('Location: index.php');
+
 }
 else
 {
