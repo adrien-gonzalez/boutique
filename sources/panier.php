@@ -20,15 +20,10 @@
 	{
 		$panier ->delete($_POST['produit']);
 	}
-	if(isset($_POST['valider']))
-	{
-		$panier->achat();
-	}
 
 	
-	$monpanier=$panier ->  select_panier(); ?>
+	$monpanier=$panier ->  select_panier();
 
-<?php 
 if(sizeof($monpanier) == 0)
 {
 ?>
@@ -84,7 +79,7 @@ else
 	<div class="prix_total">
 		<div class="valid_panier">
 			<div><?php echo "Prix total : ".$a. " €"; ?></div>
-			<form method="post" action="">
+			<form method="post" action="information.php">
 				<input type="submit" name="valider" value="Valider mon panier">
 			</form>
 		</div>

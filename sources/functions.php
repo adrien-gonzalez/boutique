@@ -447,7 +447,7 @@ class panier
 
 	}
 
-	public function achat()
+	public function achat($adresse)
 	{
 		$login=$_SESSION['login'];
 		$id_user=$this->connectdb()->query("SELECT id FROM utilisateurs where login='$login'");
@@ -470,10 +470,12 @@ class panier
 			$quantite=$tab[$i][3];
 			$prix=$tab[$i][4];
 
-			$achat=$this->connectdb()->query("INSERT INTO commande (id_utilisateur, id_produits, quantité, prix) VALUES('$id_utilisateur', '$id_produits', '$quantite', '$prix')");
+			$achat=$this->connectdb()->query("INSERT INTO commande (id_utilisateur, id_produits, quantité, prix, adresse) VALUES('$id_utilisateur', '$id_produits', '$quantite', '$prix', '$adresse')");
 		}
 
 		$delete=$this->connectdb()->query("DELETE FROM panier WHERE id_utilisateur='$utilisateur'");
+
+		header('Location: commande.php');
 		
 	}
 
