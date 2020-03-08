@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 07 mars 2020 à 10:58
+-- Généré le :  Dim 08 mars 2020 à 17:17
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -63,7 +63,15 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adresse` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT DELAYED INTO `commande` (`id`, `id_utilisateur`, `id_produits`, `quantité`, `prix`, `date`, `adresse`) VALUES
+(22, 15, 44, 1, 750, '2020-03-08 18:15:30', '43000 Avenue DesFleurs'),
+(20, 15, 45, 1, 835, '2020-03-06 18:03:39', '43000 Avenue DesFleurs');
 
 -- --------------------------------------------------------
 
@@ -104,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `quantité` int(11) NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
