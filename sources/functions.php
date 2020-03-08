@@ -212,7 +212,7 @@ class produit
 	public function categorie()
 	{
 	$tabcategorie=[];
-	$categorie=$this->connectdb()->query("SELECT * FROM `categorie`");
+	$categorie=$this->connectdb()->query("SELECT * FROM `categorie` ORDER BY id ASC");
 
 	while($images = $categorie->fetch())
 	{
@@ -226,7 +226,7 @@ class produit
 	{
 
 	$tabsouscategorie=[];
-	$sous_categorie=$this->connectdb()->query("SELECT * FROM sous_categorie");
+	$sous_categorie=$this->connectdb()->query("SELECT * FROM sous_categorie  ORDER BY id ASC");
 	
 
 	while($images = $sous_categorie->fetch())
@@ -514,4 +514,43 @@ class panier
 
 }
 
+
+
+class categorie
+{
+
+	function connectdb()
+	{
+	   
+		try {
+			$base = new PDO('mysql:host=localhost;dbname=boutique', 'root', '',
+				array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
+		} catch (PDOException $e) {
+		    echo 'Connexion échouée : ' . $e->getMessage();
+		}
+		return $base;
+	}
+
+	public function ajout_categorie($nom)
+	{
+		$insert_categorie=$this->connectdb()->query("INSERT INTO categorie VALUES (NULL, '$nom', '$nom')");
+	}
+
+	public function ajout_sous_categorie($nom, $chemin, $hauteur, $largeur)
+	{
+		$insert_sous_categorie=$this->connectdb()->query("INSERT INTO sous_categorie VALUES (NULL, '$nom', '$chemin', '$hauteur', '$largeur')");
+	}
+
+	public function delete_sous_categorie($chemin)
+	{
+
+		$delete_sous_categorie=$this->connectdb()->query("DELETE FROM sous_categorie WHERE chemin='$chemin'");
+	}
+
+	public function delete_categorie($id)
+	{
+
+		$delete_categorie=$this->connectdb()->query("DELETE FROM categorie WHERE id='$id'");
+	}
+}
 ?>

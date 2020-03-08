@@ -1,11 +1,13 @@
 <?php include("functions.php");
-include("header.php");
+
 
 $produit = new produit;
+$categorie= new categorie;
 
 $tabproduits=$produit->produits();
 $tab=$produit->categorie();
 $tab1=$produit->sous_categorie();
+
 
 
 
@@ -43,6 +45,37 @@ if(isset($_POST['ajout_produit']))
 
 }
 
+if(isset($_POST['ajout_categorie']))
+{
+	$categorie -> ajout_categorie($_POST['nom_categorie']);
+}
+
+if(isset($_POST['ajout_sous_categorie']))
+{
+	?>
+	<div class="uplodad">
+		<?php include("upload.php");?>
+	</div>
+	<?php
+	
+	$chemin="../img/".$name;
+
+	$categorie -> ajout_sous_categorie($_POST['nom_sous_categorie'], $chemin, $_POST['hauteur'], $_POST['largeur']);
+}
+
+
+if(isset($_POST['supprimer_categorie']))
+{
+	$categorie ->delete_categorie($_POST['id_categorie']);
+}
+
+if(isset($_POST['supprimer_sous_categorie']))
+{
+	$handle=opendir("../img/");
+	unlink($_POST['chemin_image_sous_categorie']);
+	$categorie ->delete_sous_categorie($_POST['chemin_image_sous_categorie']);
+}
+
 if(isset($_GET['action']))
 {
 	$nomproduit=$produit->nomproduits($_GET['nom']);
@@ -65,10 +98,18 @@ if(isset($_POST['supprimer']))
 	</head>
 <body class="administration">
 
-<div class="choix">
+<?php include("header.php"); ?>
+
+<div class="option">
 	<form action="" method="get">
 		<input name="option" type="submit" value="Ajouter un produit">
+		<input name="option" type="submit" value="Ajouter Catégorie">
+		<input name="option" type="submit" value="Ajouter une Sous-catégorie">
+	</form>
+	<form action="" method="get">
 		<input name="option" type="submit" value="Supprimer ou modifier un produit">
+		<input name="option" type="submit" value="Supprimer une Catégorie">
+		<input name="option" type="submit" value="Supprimer une Sous-catégorie">
 	</form>
 </div>
 
@@ -90,7 +131,6 @@ if(isset($_POST['supprimer']))
 		</div>
 			<textarea name="description" required placeholder="description"></textarea>
 			<input required type="file" name="fileToUpload" id="fileToUpload">
-
 			<select name="categorie">
 				<?php 
 				for($i=0; $i < sizeof($tab); $i++)
@@ -145,8 +185,88 @@ if(isset($_POST['supprimer']))
 					</div>
 			</form>
 		</div>
-			<?php
-			
+		<?php	
+		}
+		else if($_GET['option']=="Ajouter Catégorie")
+		{
+		?>
+			<div class="adminform2">
+				<form action="" method="post">
+					<input required placeholder="Nom de votre catégorie" type="text" name="nom_categorie">
+				<div class="choix">
+					<input type="submit" name="ajout_categorie" value="Ajouter">
+				</div>
+				</form>
+			</div>
+		<?php
+		}
+		else if($_GET['option']=="Ajouter une Sous-catégorie")
+		{
+		?>
+			<div class="adminform3">
+				<form action="" method="post" enctype="multipart/form-data">
+					<input type="text" required name="nom_sous_categorie" placeholder="Nom de votre sous-categorie">
+					<input required type="file" name="fileToUpload" id="fileToUpload">
+					<div class="taille">
+						<label>Hauteur :</label>
+						<input name="hauteur" required type="number" value="200">
+						<label>Largeur :</label>
+						<input name="largeur" required type="number" value="200">
+					</div>
+					<div class="choix">
+						<input type="submit" name="ajout_sous_categorie" value="Ajouter">
+					</div>
+				</form>
+			</div>
+		<?php
+		}
+		else if($_GET['option']=="Supprimer une Sous-catégorie")
+		{
+		?>
+			<div class="adminform2">
+				<form action="administration.php" method="post">
+					<select name="chemin_image_sous_categorie">
+					
+					<?php for($p=0; $p < sizeof($tab1); $p++)
+					{
+					?>
+						<option value="<?php echo $tab1[$p][2];?>"><?php echo $tab1[$p][1];?></option>
+						
+					<?php
+					}
+					?>
+
+					</select>	
+					<div class="choix">
+						<input type="submit" name="supprimer_sous_categorie" value="Supprimer">
+					</div>
+				</form>
+			</div>
+		<?php
+		}
+		else if($_GET['option']=="Supprimer une Catégorie")
+		{
+		?>
+			<div class="adminform2">
+				<form action="administration.php" method="post">
+					<select name="id_categorie">
+					
+					<?php for($j=0; $j < sizeof($tab); $j++)
+					{
+					?>
+						<option value="<?php echo $tab[$j][0];?>"><?php echo $tab[$j][1];?></option>
+						
+					<?php
+					}
+					?>
+
+					</select>	
+					<div class="choix">
+						<input type="submit" name="supprimer_categorie" value="Supprimer">
+					</div>
+				</form>
+			</div>
+		<?php
 		}
 		}	
 		if(isset($_GET['nom']))

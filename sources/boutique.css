@@ -18,6 +18,7 @@ body{
 .administration .adminform form{
 display: flex;
 width: 40%;
+min-width: 400px;
 flex-direction: column;
 background-color:rgba(255, 255, 255, 0.5);
 padding: 10px;
@@ -53,7 +54,15 @@ border:1px solid white;
 
 }
 
-.administration .choix input[type="submit"]{
+.option{
+
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.administration .choix input[type="submit"], .option input[type="submit"]{
   padding: 10px;
   background-color: #F5B041;
   color: white;
@@ -62,7 +71,7 @@ border:1px solid white;
   cursor: pointer;
 }
 
-.administration .choix input[type="submit"]:hover{
+.administration .choix input[type="submit"]:hover, .administration .option input[type="submit"]:hover{
 background-color: #273746 ;
 }
 
@@ -71,8 +80,7 @@ background-color: #273746 ;
   padding: 10px;
 }
 
-.administration form input[type="text"]:focus,
-input[type="file"]:focus,
+.administration input[type="file"]:focus,
 textarea:focus{
  
   border-color: #129FEA;  
@@ -82,6 +90,7 @@ textarea:focus{
 width: 100%;
 display: flex;
 justify-content: center;
+margin-top: 5%;
 
 }
 
@@ -95,9 +104,28 @@ margin-top: 10%;
 
 }
 
-.administration .adminform2 form{
+.adminform3{
+width: 100%;
+display: flex;
+justify-content: center;
+height: 250px;
+margin-bottom: 20%;
+margin-top: 10%;
+
+}
+
+
+
+.adminform2 input[type="text"], .adminform3 input[type="text"]{
+
+  padding: 10px;
+  width: 80%;
+}
+
+.administration .adminform2 form, .administration .adminform3 form{
 display: flex;
 width: 30%;
+min-width: 300px;
 flex-direction: column;
 background-color:rgba(255, 255, 255, 0.5);
 padding: 10px;
@@ -112,7 +140,6 @@ justify-content: space-between;
 width: 100%;
 background-color: #F5B041;
 margin-top: 5%;
-
 }
 
 footer,p, h3, .categorie a, a{
@@ -120,6 +147,7 @@ footer,p, h3, .categorie a, a{
 color:white;
 text-decoration: none;
 transition: 0.2s;
+
 }
 
 footer a:hover, .categorie a:hover{
@@ -154,14 +182,6 @@ margin-bottom: 10px;
 
 }
 
-footer .categorie{
-	display:flex;
-	flex-direction: column;
-	justify-content: center
-
-
-
-}
 
 footer .categorie h3{
    text-decoration: underline;
@@ -408,6 +428,38 @@ width: 45%;
     height: 700px;
   }
 
+  .administration .adminform form input[type="text"], select {
+
+  width: 40%;
+  padding: 10px;
+  border:1px solid white;
+
+  }
+
+  .administration .adminform form input[type="file"]{
+
+  width: 400px;
+  padding: 10px;
+  border:1px solid white;
+
+  }
+  .option input[type="submit"]{
+
+  padding: 10px;
+  background-color: #F5B041;
+  color: white;
+  transition: 0.5s;
+  border:none;
+  cursor: pointer;
+  font-size: 10px;
+  width: 180px;
+
+  }
+  .option{
+
+   text-align: center;
+  }
+
 }
 
 @media (max-width: 1150px) {
@@ -430,7 +482,28 @@ width: 45%;
   }
   .form_information form{
   font-size:15px;
-}
+  }
+
+  .logohover{
+    display:none;
+  }
+
+  .logo_responsive{
+    display: none;
+  }
+
+  header li{
+    font-size: 10px;
+  }
+
+
+  .log_titre{
+
+    font-size: 30px;
+  }
+
+  
+  
 
 }
 
@@ -439,7 +512,7 @@ width: 45%;
   border: none;
   background-color: transparent;
   color: white;
-  font-size: 16px; 
+  font-size: 100%; 
   transition: 0.2s;
 }
 
@@ -576,13 +649,7 @@ margin-top: 5%;
 
 /*DERNIER AJOUT*/
 
-.dernier_ajout{
 
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.63); 
-}
 
 .accueil h1{
   text-align: center;
@@ -693,6 +760,10 @@ justify-content: space-between;
   font-size: 15px;
   }
 
+  footer{
+    margin-top:30%;
+  }
+
 }
 
 @media (max-width: 900px) {
@@ -701,13 +772,30 @@ justify-content: space-between;
 
   background-color: rgba(255, 255, 255, 0.7); 
   width: 100%;
-  font-size: 10px;
+  font-size: 8px;
+  }
+
+  .infos_commande img{
+
+    width: 30px;
   }
 
   .img{
     display:none;
   }
+
 }
+
+
+
+.dernier_ajout{
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.63); 
+  }
 
 .infos_panier table tr, .infos_commande table tr{
   display: flex;

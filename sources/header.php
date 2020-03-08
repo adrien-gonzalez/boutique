@@ -36,7 +36,7 @@ if(isset($_POST['deco']))
                   <a class="menu" href="sous-categorie.php?type=<?php echo $tab[$j][2];?>&id=<?php  echo $tab[$j][0];?>"><?php echo $tab[$j][1];?></a>
                     <ul>
                 <?php 
-                  for($i=0; $i < sizeof($tab); $i++)
+                  for($i=0; $i < sizeof($tab1); $i++)
                   {
                     ?>
                     <li>
@@ -80,7 +80,7 @@ if(isset($_POST['deco']))
 
         </ul>
    </li>
-   <li>
+   <li class="logo_responsive">
       <a href="index.php"><div class="logohover"></div></a>      
    </li>
    <li>
@@ -99,7 +99,7 @@ else
 <li>
       <a href="contact.php">Contactez-nous</a>  
   </li>
-  <li>
+  <li class="logo_responsive">
        <a href="index.php"><div class="logohover"></div></a>      
   </li>
    <li>
