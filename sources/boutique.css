@@ -15,6 +15,11 @@ body{
   background-attachment: fixed;
 }
 
+.administration footer{
+
+  margin-top: 30%;
+}
+
 .administration .adminform form{
 display: flex;
 width: 40%;
@@ -125,7 +130,7 @@ margin-top: 10%;
 .administration .adminform2 form, .administration .adminform3 form{
 display: flex;
 width: 30%;
-min-width: 300px;
+min-width: 400px;
 flex-direction: column;
 background-color:rgba(255, 255, 255, 0.5);
 padding: 10px;
@@ -249,7 +254,8 @@ cursor:pointer;
 display: flex;
 width: 100%;
 justify-content: center;
-margin-top: 10%;
+margin-top: 15%;
+margin-bottom: 15%;
 }
 
 
@@ -415,97 +421,8 @@ width: 45%;
 
 }
 
-@media (max-width: 1350px) {
-  .sous_categorie div{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .sous_categorie {
-
-    height: 700px;
-  }
-
-  .administration .adminform form input[type="text"], select {
-
-  width: 40%;
-  padding: 10px;
-  border:1px solid white;
-
-  }
-
-  .administration .adminform form input[type="file"]{
-
-  width: 400px;
-  padding: 10px;
-  border:1px solid white;
-
-  }
-  .option input[type="submit"]{
-
-  padding: 10px;
-  background-color: #F5B041;
-  color: white;
-  transition: 0.5s;
-  border:none;
-  cursor: pointer;
-  font-size: 10px;
-  width: 180px;
-
-  }
-  .option{
-
-   text-align: center;
-  }
-
-}
-
-@media (max-width: 1150px) {
- .infos_produit{
-
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .detail_produit{
-    display: flex;
-    justify-content: flex-end;
-     width: 100%;
-     align-items: center;
-  }
-  .nom_produit{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .form_information form{
-  font-size:15px;
-  }
-
-  .logohover{
-    display:none;
-  }
-
-  .logo_responsive{
-    display: none;
-  }
-
-  header li{
-    font-size: 10px;
-  }
 
 
-  .log_titre{
-
-    font-size: 30px;
-  }
-
-  
-  
-
-}
 
 .disconnect input[type="submit"]{
 
@@ -751,40 +668,6 @@ justify-content: space-between;
   font-size: 13px;
 }
 
-@media (max-width: 1200px) {
- 
-  .infos_panier table, .infos_commande table{
-
-  background-color: rgba(255, 255, 255, 0.7); 
-  width: 100%;
-  font-size: 15px;
-  }
-
-  footer{
-    margin-top:30%;
-  }
-
-}
-
-@media (max-width: 900px) {
- 
-  .infos_panier table, .infos_commande table{
-
-  background-color: rgba(255, 255, 255, 0.7); 
-  width: 100%;
-  font-size: 8px;
-  }
-
-  .infos_commande img{
-
-    width: 30px;
-  }
-
-  .img{
-    display:none;
-  }
-
-}
 
 
 
@@ -1035,6 +918,152 @@ background-color: #273746;
 .visite_boutique div button:hover{
 
   background-color: #273746;
+}
+
+
+
+/*PARTIE RESPONSIVE*/
+
+
+
+@media (max-width: 1200px) {
+ 
+  .infos_panier table, .infos_commande table{
+
+  background-color: rgba(255, 255, 255, 0.7); 
+  width: 100%;
+  font-size: 15px;
+  }
+
+  footer{
+    margin-top:30%;
+  }
+  .contact{
+    margin-top: 50%;
+    margin-bottom: 50%;
+  }
+
+  .administration footer{
+
+  margin-top: 80%;
+}
+
+}
+
+@media (max-width: 900px) {
+ 
+  .infos_panier table, .infos_commande table{
+
+  background-color: rgba(255, 255, 255, 0.7); 
+  width: 100%;
+  font-size: 8px;
+  }
+
+  .infos_commande img{
+
+    width: 30px;
+  }
+
+  .img{
+    display:none;
+  }
+
+}
+
+
+
+@media (max-width: 1350px) {
+  .sous_categorie div{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sous_categorie {
+
+    height: 700px;
+  }
+
+  .administration .adminform form input[type="text"], select {
+
+  width: 40%;
+  padding: 10px;
+  border:1px solid white;
+
+  }
+
+  .administration .adminform form input[type="file"]{
+
+  width: 400px;
+  padding: 10px;
+  border:1px solid white;
+
+  }
+  .option input[type="submit"]{
+
+  padding: 10px;
+  background-color: #F5B041;
+  color: white;
+  transition: 0.5s;
+  border:none;
+  cursor: pointer;
+  font-size: 10px;
+  width: 180px;
+
+  }
+  .option{
+
+   text-align: center;
+  }
+
+  .adminform3 form, .adminform2 form, .adminform form{
+    font-size: 12px;
+  }
+
+}
+
+
+
+@media (max-width: 1150px) {
+ .infos_produit{
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .detail_produit{
+    display: flex;
+    justify-content: flex-end;
+     width: 100%;
+     align-items: center;
+  }
+  .nom_produit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form_information form{
+  font-size:15px;
+  }
+
+  .logohover{
+    display:none;
+  }
+
+  .logo_responsive{
+    display: none;
+  }
+
+  header li{
+    font-size: 10px;
+  }
+
+
+  .log_titre{
+
+    font-size: 30px;
+  }
 }
 
 

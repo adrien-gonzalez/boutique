@@ -28,6 +28,9 @@ if(isset($_POST['deco']))
   <li>
       <a class="menu" href="produits.php">Boutique</a>
       <ul>
+            <li>
+                <a class="menu" href="index.php">Accueil</a>
+            </li>
               <?php
               for($j=0; $j < sizeof($tab); $j++)
               {
