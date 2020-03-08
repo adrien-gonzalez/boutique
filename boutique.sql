@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 08 mars 2020 à 17:17
+-- Généré le :  Dim 08 mars 2020 à 20:47
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `nom` varchar(255) NOT NULL,
   `nomurl` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `sous_categorie` (
   `hauteur` int(11) NOT NULL,
   `largeur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `sous_categorie`
