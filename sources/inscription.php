@@ -32,9 +32,9 @@ if(isset($_POST['signin']))
 </div>
 
 		<?php include("header.php");?>
-		<div id="inscription">
-			<p>Inscrivez-Vous!</p>
-		<div id="panel_inscription">
+
+<h1 class="log_titre">Inscrivez-vous !</h1>
+<div id="form_log2">
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login">
 			<input type="text" name="lastname" required placeholder="Nom">
@@ -44,8 +44,7 @@ if(isset($_POST['signin']))
 			<input type="password" name="pass2" required placeholder="Confirmer votre mot de passe">
 			<input type="submit" name="signin" required value="S'inscrire">
 		</form>
-		</div>
-		</div>
+</div>
 
 <?php include("footer.php");?>
 	</body>

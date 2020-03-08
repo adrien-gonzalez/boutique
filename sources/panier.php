@@ -16,6 +16,11 @@
 
 <?php
 
+	if(!isset($_SESSION['login']))
+	{
+		header('Location: connexion.php');
+	}
+
 	if(isset($_POST['suppr']))
 	{
 		$panier ->delete($_POST['produit']);
@@ -23,6 +28,7 @@
 
 	
 	$monpanier=$panier ->  select_panier();
+
 
 if(sizeof($monpanier) == 0)
 {
@@ -66,7 +72,7 @@ else
 					<!-- Supprimer élément -->
 					<td>
 						<form class="corbeille" method="post" action="">
-							<input type="hidden" name="produit" value="<?php echo $monpanier[$i]['id']; ?>">
+							<input type="hidden" name="produit" value="<?php echo $monpanier[$i][0]; ?>">
 							<input type="submit" value="" name="suppr">
 						</form>
 					</td>

@@ -428,6 +428,9 @@ width: 45%;
     flex-direction: column;
     align-items: center;
   }
+  .form_information form{
+  font-size:15px;
+}
 
 }
 
@@ -445,77 +448,76 @@ width: 45%;
   color: #F5B041;
 }
 
-#inscription{
-display:flex;
-justify-content: center;
-margin:81px;
-margin-left: 547px;
-padding: 5px;
-background-color:rgba(255, 255, 255, 0.5);
-height: 30vh;
-width: 20vw;
-border-radius: 4px;
-text-align: center;
+
+#form_log{
+display: flex;
+justify-content: space-between;
+width: 100%;
+flex-direction: column;
+align-items: center;
+margin-top: 120px;
+margin-bottom: 120px;
+height: 150px;
 
 }
 
-#panel_inscription{
-padding: 10%;
-padding-left: 0px;
-padding-right: 0px;
-margin-right:4%;
-text-align: center;
+#form_log2{
+display: flex;
+justify-content: space-between;
+width: 100%;
+flex-direction: column;
+align-items: center;
+margin-top: 120px;
+margin-bottom: 120px;
+height: 300px;
 
 }
 
-#connexion{
-display:flex;
-justify-content: center;
-margin: 124px;
-margin-left: 35%;
-padding: 2px;
-padding-top: 42px;
-background-color:rgba(255, 255, 255, 0.5);
-height: 14vh;
-width: 30vw;
-border-radius: 4px;
+.log_titre{
+
+margin-top: 120px;
 text-align: center;
+color:white;
+}
+
+#form_log form, #form_log2 form{
+  width: 30%;
+  min-width: 300px;
+  background-color:rgba(255, 255, 255, 0.5);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 
 }
 
-#panel_connexion{
 
-padding-left: 0px;
-padding-right: 0px;
-margin: 5px;
-margin-top: 10%;
-margin-right:4%;
-text-align: center;
 
+#form_log form input[type="text"], input[type="password"], #form_log2 form input[type="text"], #form_log2 form input[type="password"], #form_log2 form input[type="email"] {
+
+  width: 50%;
+  min-width: 210px;
+  padding: 8px;
 }
 
-#profil{
-display:flex;
-justify-content: center;
-margin:81px;
-margin-left: 547px;
-padding: 5px;
-background-color:rgba(255, 255, 255, 0.5);
-height: 30vh;
-width: 20vw;
-border-radius: 4px;
-text-align: center;
+#form_log form input[type="submit"], #form_log2 form input[type="submit"]{
 
+  width: 30%;
+  padding: 5px;
+  background-color: #F5B041;
+  color: white;
+  transition: 0.5s;
+  border:none;
+  cursor: pointer;
 }
 
-#panel_profil{
-padding: 10%;
-padding-left: 0px;
-padding-right: 0px;
-margin-right:4%;
-text-align: center;
-
+#form_log form input[type="submit"]:hover, #form_log2 form input[type="submit"]:hover{
+  
+  background-color: #273746;
 }
+
 
 
 .produits_encadrement{
@@ -690,6 +692,7 @@ justify-content: space-between;
   width: 100%;
   font-size: 15px;
   }
+
 }
 
 @media (max-width: 900px) {
@@ -699,6 +702,10 @@ justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.7); 
   width: 100%;
   font-size: 10px;
+  }
+
+  .img{
+    display:none;
   }
 }
 
@@ -786,13 +793,29 @@ background-color: #273746;
 
 .form_information form{
   width:50%;
+  min-width: 400px;
   background-color: rgba(255, 255, 255, 0.63);
   display:flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
   justify-content: space-between;
-  height: 250px;
+  height: 500px;
+}
+
+.info_cb{
+
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: center;
+}
+
+
+.info_cb input[type="number"]{
+
+  width: 70%;
+  padding: 10px;
 }
 
 .form_information form input[type="text"], input[type="email"]{
@@ -815,6 +838,74 @@ padding: 10px;
 .form_information form input[type="submit"]:hover{
 
 background-color: #273746;
+}
+
+.form_information fieldset{
+
+  width: 80%;
+  text-align: center;
+  padding: 10px;
+}
+
+.form_information .cb{
+
+  width: 60%;
+  height: 200px;
+}
+
+.form_information .moyen_paiement{
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.visa, .paypal{
+  
+  display:flex;
+  width: 100px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+
+  
+}
+
+.mastercard{
+
+  display:flex;
+  width: 150px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.visa div{
+  width: 25%;
+  height: 40%;
+  display: flex;
+  justify-content: flex-start;
+  background-image: url(../img/visa.png);
+  background-size: cover;
+}
+
+.mastercard div{
+  width: 18%;
+  height: 30%;
+  display: flex;
+  justify-content: flex-start;
+  background-image: url(../img/mastercard.png);
+  background-size: cover;
+}
+
+.paypal div{
+
+  width: 30%;
+  height: 30%;
+  display: flex;
+  justify-content: flex-start;
+  background-image: url(../img/logo-paypal.jpg);
+  background-size: cover;
 }
 
 .visite_boutique{

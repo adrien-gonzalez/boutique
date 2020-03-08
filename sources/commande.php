@@ -10,8 +10,13 @@
 
 	<?php
 
-	$panier = new panier;
+	if(!isset($_SESSION['login']))
+	{
+		header('Location: connexion.php');
+	}
 	
+	$panier = new panier;
+
 	if(isset($_POST['supprimer_commande']))
 	{
 		$panier -> delete_commande($_POST['produit_suppr']);
@@ -20,6 +25,13 @@
 	 
 	
 	$ma_commande=$panier ->select_commande();
+
+	date_default_timezone_set('Europe/Paris');
+	$date=date("F j, Y, g:i a"); 
+
+	$date_actuelle=date_create($date);
+	
+	
 	
 
 
@@ -74,12 +86,27 @@ else
 			<!-- Adresse de livraison -->
 			<td><?php echo $ma_commande[$i][6];?></td>
 			<!-- Supprimer élément -->
+			<?php 
+			$date_bdd=date_create($ma_commande[$i][5]);
+					
+			if(date_timestamp_get($date_actuelle) - date_timestamp_get($date_bdd) > 86400)
+			{
+			?>
+				<td>Délai dépassé (24h)</td>
+			<?php
+			}
+			else
+			{
+			?>
 			<td>
 				<form class="corbeille" method="post" action="">
-					<input type="hidden" name="produit_suppr" value="<?php echo $ma_commande[$i]['id']; ?>">
+					<input type="hidden" name="produit_suppr" value="<?php echo $ma_commande[$i][0]; ?>">
 					<input type="submit" value="" name="supprimer_commande">
 				</form>
 			</td>
+			<?php
+			}
+			?>
 			<!-- Calcul prix total de la commande -->
 			<?php $a=$a+$ma_commande[$i][4]*$ma_commande[$i][3];?>
 		</tr>

@@ -32,9 +32,9 @@ $monprofil=$user->getAllInfos();
 
 	<body>
 		<?php include("header.php");?>
-		<div id="profil">
-			<p>Modifier vos information!</p>
-		<div id="panel_profil">
+
+<h1 class="log_titre">Vos informations</h1>
+<div id="form_log2">
 		<form action="" method="post">
 			<input type="text" name="login" required placeholder="Login" value="<?php echo $monprofil[0][1]; ?>">
 			<input type="text" name="lastname" required placeholder="Nom" value="<?php echo $monprofil[0][2]; ?>">
@@ -43,7 +43,6 @@ $monprofil=$user->getAllInfos();
 			<input type="password" name="pass" required placeholder="Mot de passe" value="<?php echo $_SESSION['password'];?>">
 			<input type="submit" name="update" required value="Modifier">
 		</form>
-	</div>
 </div>
 		<?php include("footer.php");?>
 	</body>
