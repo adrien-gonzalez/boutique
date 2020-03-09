@@ -13,7 +13,7 @@ if(isset($_POST['signin']))
 	$user = new userpdo;
 	if($user->register($_POST['login'], $_POST['lastname'],$_POST['firstname'],$_POST['email'],$_POST['pass1'], $_POST['pass2'])=="ok");
 	{
-		header('location: index.php');
+		header('location: connexion.php');
 	}
 
 }

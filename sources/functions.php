@@ -553,4 +553,56 @@ class categorie
 		$delete_categorie=$this->connectdb()->query("DELETE FROM categorie WHERE id='$id'");
 	}
 }
+
+
+
+class commentaire
+{
+
+	function connectdb()
+	{
+	   
+		try {
+			$base = new PDO('mysql:host=localhost;dbname=boutique', 'root', '',
+				array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
+		} catch (PDOException $e) {
+		    echo 'Connexion échouée : ' . $e->getMessage();
+		}
+		return $base;
+	}
+	public function insert_avis($commentaire, $id_produit)
+	{
+		$login=$_SESSION['login'];
+		$id_user=$this->connectdb()->query("SELECT id FROM utilisateurs where login='$login'");
+		$user = $id_user->fetch(PDO::FETCH_ASSOC);
+
+		$utilisateur=$user['id'];
+		$ajout_commentaire=$this->connectdb()->query("INSERT INTO avis (commentaire, id_produits, id_utilisateur) VALUES ('$commentaire', '$id_produit','$utilisateur')");
+	}
+
+	public function select_avis($id_produits)
+	{
+		$select_commentaire=$this->connectdb()->query("SELECT avis.id, login, commentaire, `date`, id_utilisateur FROM avis, utilisateurs WHERE id_produits='$id_produits' and id_utilisateur=utilisateurs.id ORDER BY avis.id ASC");
+
+		$tab=[];
+
+		while($commentaires = $select_commentaire -> fetch())
+		{
+			array_push($tab, $commentaires);
+		}
+
+		return $tab;
+
+
+	}
+	public function delete_avis($id)
+	{
+
+		$delete_avis=$this->connectdb()->query("DELETE FROM avis WHERE id='$id'");
+	}
+
+
+
+
+}
 ?>
