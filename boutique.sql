@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 08 mars 2020 à 20:47
+-- Généré le :  lun. 09 mars 2020 à 16:18
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -23,6 +23,30 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `boutique` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `boutique`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `avis`
+--
+
+DROP TABLE IF EXISTS `avis`;
+CREATE TABLE IF NOT EXISTS `avis` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `commentaire` varchar(255) NOT NULL,
+  `id_produits` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `avis`
+--
+
+INSERT DELAYED INTO `avis` (`id`, `commentaire`, `id_produits`, `id_utilisateur`, `date`) VALUES
+(17, '3', 45, 15, '2020-03-09 16:31:43'),
+(8, 'test', 46, 12, '2020-03-09 16:12:13');
 
 -- --------------------------------------------------------
 
@@ -63,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adresse` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `commande`
@@ -71,6 +95,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
 
 INSERT DELAYED INTO `commande` (`id`, `id_utilisateur`, `id_produits`, `quantité`, `prix`, `date`, `adresse`) VALUES
 (22, 15, 44, 1, 750, '2020-03-08 18:15:30', '43000 Avenue DesFleurs'),
+(23, 12, 45, 1, 835, '2020-03-09 08:46:32', '43000 Avenue DesFleurs'),
 (20, 15, 45, 1, 835, '2020-03-06 18:03:39', '43000 Avenue DesFleurs');
 
 -- --------------------------------------------------------
@@ -112,7 +137,14 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `quantité` int(11) NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT DELAYED INTO `panier` (`id`, `id_utilisateur`, `id_produits`, `quantité`, `prix`) VALUES
+(61, 12, 45, 1, 835);
 
 -- --------------------------------------------------------
 
@@ -181,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `password` varchar(255) NOT NULL,
   `grade` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
@@ -189,7 +221,8 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 
 INSERT DELAYED INTO `utilisateurs` (`id`, `login`, `nom`, `prenom`, `email`, `password`, `grade`) VALUES
 (12, 'Firefou', 'Gonzalez', 'Adrien', 'adrien1361@hotmail.fr', '$2y$12$R9bvoYGcnfMF49LCUuzD1.0DdvWkNRapF5HgecrmRhz0Ec0gYHHWO', 'utilisateur'),
-(15, 'admin', 'admin', 'admin', 'admin@gmail.com', '$2y$12$ihiKI19eh6qc.jIXzhb.G.nNa6R3FyGEGv6ooDVyM30ucW0ZMtl/W', 'admin');
+(15, 'admin', 'admin', 'admin', 'admin@gmail.com', '$2y$12$ihiKI19eh6qc.jIXzhb.G.nNa6R3FyGEGv6ooDVyM30ucW0ZMtl/W', 'admin'),
+(16, 'Walken99', 'Gonzalez', 'Adrien', 'adrien1361@hotmail.fr', '$2y$12$xhQxcEmwz32mvaUSO97.gO0v.QXeeB90ad6KzszUH9dXIeri1Ysd2', 'utilisateur');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
