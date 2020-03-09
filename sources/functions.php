@@ -365,6 +365,22 @@ class produit
 		return $tab;
 	}
 
+	public function recherche($mot)
+	{ 
+		$recherhe_mot=$this->connectdb()->query("SELECT id_sous_categorie, id_categorie, produits.id, nom, prix, hauteur, largeur, description, chemin FROM produits, images WHERE produits.id=id_produits and produits.nom LIKE '%".$mot."%'");
+
+		$tab=[];
+
+		while($resultat_recherche = $recherhe_mot -> fetch())
+		{
+			array_push($tab, $resultat_recherche);
+		}
+
+		return($tab);
+
+		
+	}
+
 	function genererChaineAleatoire($longueur = 10)
 	{
 	 $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

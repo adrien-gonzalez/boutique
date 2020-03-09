@@ -514,7 +514,7 @@ background-color: rgba(255, 255, 255, 0.63);
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
-margin-top: 10%;
+margin-top: 5%;
 margin-bottom: 10%;
 }
 
@@ -1028,6 +1028,36 @@ background-color: #273746;
 
   display: flex;
   justify-content: space-between;
+}
+
+.barre_recherche{
+
+  margin-top:5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.barre_recherche form{
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.barre_recherche form input[type="submit"]{
+
+  width: 100px;
+  padding: 5px;
+  background-color: #F5B041;
+  color: white;
+  transition: 0.5s;
+  border:none;
+  cursor: pointer;
+}
+
+.barre_recherche form input[type="submit"]:hover{
+  
+  background-color: #273746;
 }
 
 /*PARTIE RESPONSIVE*/

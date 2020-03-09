@@ -9,18 +9,47 @@
 		<meta charset="UTF-8">
 	</head>
 <body>
-	<?php include("header.php");?>
+	<?php include("header.php");
+
+$produit= new produit();
+
+if(isset($_GET['search']))
+{
+	$resultat=$produit->recherche($_GET['search']);
+}
+?>
+
+<div class="barre_recherche">
+	<form method="get" action="">
+		<input placeholder="Votre recherche" name="search" type="text">
+		<input type="submit" value="Rechercher">
+	</form>
+</div>
+
+
 
 <div class="produits_encadrement">
 <p>Nos Produits</p>
 
 <?php
-$produit= new produit();
+
 
 $image=$produit -> images();
 
+if(isset($_GET['search']))
+{
+	for($i=0; $i < sizeof($resultat); $i++)
+	{
+		
+	?>
+		<div class="hover_produits">
+			<a href="description.php?id=<?php echo  $resultat[$i][2];?>"><img height="<?php echo $resultat[$i][5];?>" width="<?php echo $resultat[$i][6];?>" src="<?php echo $resultat[$i][8];?>"></a>
+		</div>
+	<?php
+	}
+}
 
-if(!isset($_GET['id']) && !isset($_GET['id2']))
+else if(!isset($_GET['id']) && !isset($_GET['id2']))
 {
 
 	for($i=0; $i < sizeof($image); $i++)
@@ -38,7 +67,7 @@ else if(!isset($_GET['id']) || !isset($_GET['id2']))
 	header('Location: index.php');
 
 }
-else
+else 
 {
 	for($i=0; $i < sizeof($image); $i++)
 	{
