@@ -3,6 +3,12 @@
 
 $produit = new produit;
 $categorie= new categorie;
+$user = new userpdo;
+
+if($user -> getAllInfos()[0][6] != "admin")
+{
+	header('Location: index.php');
+}
 
 $tabproduits=$produit->produits();
 $tab=$produit->categorie();
