@@ -507,10 +507,19 @@ class panier
 
 	}
 
+	public function top_vente()
+	{
+		$ventes=$this->connectdb()->query("SELECT nom, chemin, commande.id_produits FROM commande, produits, images WHERE commande.id_produits=produits.id and commande.id_produits=images.id_produits ORDER by commande.id ASC");
 
+		$tab=[];
 
+		while($top_ventes = $ventes -> fetch())
+		{
+			array_push($tab, $top_ventes);
+		}
 
-
+		return $tab;
+	}
 
 }
 
@@ -552,6 +561,7 @@ class categorie
 
 		$delete_categorie=$this->connectdb()->query("DELETE FROM categorie WHERE id='$id'");
 	}
+
 }
 
 

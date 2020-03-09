@@ -25,6 +25,7 @@ if(!isset($_GET['id']) && !isset($_GET['id2']))
 
 	for($i=0; $i < sizeof($image); $i++)
 	{
+		
 	?>
 		<div class="hover_produits">
 			<a href="description.php?id=<?php echo  $image[$i][2];?>"><img height="<?php echo $image[$i][5];?>" width="<?php echo $image[$i][6];?>" src="<?php echo $image[$i][8];?>"></a>
@@ -43,6 +44,7 @@ else
 	{
 	if($_GET['id']== $image[$i][1] && $_GET['id2']==  $image[$i][0])
 	{
+		
 	?>
 	<div class="hover_produits">
 		<a href="description.php?id=<?php echo  $image[$i][2];?>"><img height="<?php echo $image[$i][5];?>" width="<?php echo $image[$i][6];?>" src="<?php echo $image[$i][8];?>"></a>

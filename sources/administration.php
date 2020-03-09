@@ -124,7 +124,7 @@ if(isset($_POST['supprimer']))
 	{
 	?>
 	<div class="adminform">
-		<form action="" method="post" enctype="multipart/form-data">
+		<form action="administration.php" method="post" enctype="multipart/form-data">
 		<div class="form">
 			<input name="nom" required type="text" placeholder="Nom du Produit">
 			<input name="prix" required type="number" min="0.00" max="10000.00" step="0.01" placeholder="prix" />
@@ -169,7 +169,7 @@ if(isset($_POST['supprimer']))
 	{
 			?>
 		<div class="adminform2">
-			<form action="" method="get">	
+			<form action="administration.php" method="get">	
 				<select name="nom">
 					
 					<?php for($k=0; $k < sizeof($tabproduits); $k++)
@@ -191,7 +191,7 @@ if(isset($_POST['supprimer']))
 		{
 		?>
 			<div class="adminform2">
-				<form action="" method="post">
+				<form action="administration.php" method="post">
 					<input required placeholder="Nom de votre catégorie" type="text" name="nom_categorie">
 				<div class="choix">
 					<input type="submit" name="ajout_categorie" value="Ajouter">
@@ -204,7 +204,7 @@ if(isset($_POST['supprimer']))
 		{
 		?>
 			<div class="adminform3">
-				<form action="" method="post" enctype="multipart/form-data">
+				<form action="administration.php" method="post" enctype="multipart/form-data">
 					<input type="text" required name="nom_sous_categorie" placeholder="Nom de votre sous-categorie">
 					<input required type="file" name="fileToUpload" id="fileToUpload">
 					<div class="taille">
@@ -273,7 +273,7 @@ if(isset($_POST['supprimer']))
 				{
 				?>
 			<div class="adminform">
-				<form action="" method="post" enctype="multipart/form-data">
+				<form action="administration.php" method="post" enctype="multipart/form-data">
 				<div class="form">
 					<input  name="id" type="hidden" value="<?php echo $nomproduit[0][0];?>">
 					<input  name="chemin" type="hidden" value="<?php echo $nomproduit[1][2];?>">
