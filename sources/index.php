@@ -51,7 +51,7 @@
 	?>
 
 </div>
-<h1>Les top ventes</h1>
+<h1>Nos dernières ventes</h1>
 <div class="dernier_ajout">
 
 	<?php 
