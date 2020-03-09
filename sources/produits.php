@@ -38,6 +38,14 @@ $image=$produit -> images();
 
 if(isset($_GET['search']))
 {
+	if(sizeof($resultat)==0)
+	{
+	?>
+		<div class="hover_produits1">
+			<p>La recherhe n'a retournée aucun résultat</p>
+		</div>
+	<?php
+	}
 	for($i=0; $i < sizeof($resultat); $i++)
 	{
 		
