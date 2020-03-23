@@ -116,6 +116,11 @@ public function update($login, $nom, $prenom, $email,$password)
 	if(isset($_SESSION['login']))
 	{
 		$log=$_SESSION['login'];
+		$user = $this->connectdb()->query("SELECT *FROM utilisateurs WHERE login='$login'");
+		$etat = $user->rowCount();
+
+		if($etat ==0)
+		{
 		$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 		$update =  $this->connectdb()->query("UPDATE utilisateurs SET login='$login', nom='$nom', prenom='$prenom', email='$email', password='$hash' WHERE login='$log'");
 
@@ -125,11 +130,20 @@ public function update($login, $nom, $prenom, $email,$password)
 		$this->email=$email;
 		$this->password=$password;
 
+		$msg ="ok";
 		unset($_SESSION['login']);
 		unset($_SESSION['password']);
 		header('location: connexion.php');
 
+		}
+		else
+		{
+			$msg="erreur";
+		}
+
+		return $msg;
 	}
+
 }
 
 public function getAllInfos()
