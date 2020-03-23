@@ -112,38 +112,41 @@ public function update($login, $nom, $prenom, $email,$password)
 {	
 
 
-
-	if(isset($_SESSION['login']))
-	{
-		$log=$_SESSION['login'];
+	$log=$_SESSION['login'];
+	if($_SESSION['login'] != $login)
+	{			
 		$user = $this->connectdb()->query("SELECT *FROM utilisateurs WHERE login='$login'");
 		$etat = $user->rowCount();
-
-		if($etat ==0)
+		
+		if($etat > 0)
 		{
-		$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-		$update =  $this->connectdb()->query("UPDATE utilisateurs SET login='$login', nom='$nom', prenom='$prenom', email='$email', password='$hash' WHERE login='$log'");
-
+			$msg="erreur";	
+		}
+	}
+	else 
+	{
+		if(strlen($password) >= 5)
+		{
+			$hash = sha1($password);
+			$update =  $this->connectdb()->query("UPDATE utilisateurs SET login='$login', nom='$nom', prenom='$prenom', email='$email', password='$hash' WHERE 		login='$log'");
+		
 		$this->login=$login;
 		$this->nom=$nom;
 		$this->prenom=$prenom;
 		$this->email=$email;
 		$this->password=$password;
 
-		$msg ="ok";
 		unset($_SESSION['login']);
 		unset($_SESSION['password']);
 		header('location: connexion.php');
-
 		}
 		else
 		{
-			$msg="erreur";
+			$msg="erreur2";
 		}
-
+		
+	}	
 		return $msg;
-	}
-
 }
 
 public function getAllInfos()
