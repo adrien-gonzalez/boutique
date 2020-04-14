@@ -8,15 +8,7 @@ if(isset($_SESSION['login']))
 	header('location: index.php');
 }
 
-if(isset($_POST['connect']))
-{
-	$user = new userpdo;
-	$user->connect($_POST['login'], $_POST['password']);
-	if(($user->connect($_POST['login'], $_POST['password']))=="ok" )
-	{
-		header('location: index.php');
-	}
-}
+
 
 ?>
 
@@ -25,19 +17,36 @@ if(isset($_POST['connect']))
 
 <html>
 	<head>
+		<title>Connexion</title>
 		<link href="boutique.css" rel="stylesheet">
 	</head>
-	<body>
+<body>
+
 		<?php include("header.php");?>
-		<div id="connexion">
-			<p>Connectez Vous!</p>
-		<div id="panel_connexion">
-		<form action="" method="post">
-			<input type="text" name="login" required placeholder="Login">
-			<input type="password" name="password" required placeholder="Password">
-			<input type="submit" name="connect" required value="Connexion">
-		</form>
-	</div>
+
+<h1 class="log_titre">Connectez-vous !</h1>
+<div id="form_log">	
+
+			<form action="" method="post">
+			<?php			
+				if(isset($_POST['connect']))
+				{
+					$user = new userpdo;
+					$userconnect= $user->connect($_POST['login'], $_POST['password']);
+					if($userconnect=="ok" )
+					{
+						header('location: index.php');
+					}
+					else
+					{
+						echo $userconnect;
+					}
+				}
+			?>
+				<input type="text" name="login" required placeholder="Login">
+				<input type="password" name="password" required placeholder="Password">
+				<input type="submit" name="connect" required value="Connexion">
+			</form>	
 </div>
 
 		<?php include("footer.php");?>
@@ -45,3 +54,4 @@ if(isset($_POST['connect']))
 </html>
 
 <!-- --------------------------------------------- -->
+

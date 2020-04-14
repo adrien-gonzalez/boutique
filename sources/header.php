@@ -12,23 +12,25 @@
 <?php
 
 $produit = new produit;
+$user = new userpdo;
 $produit -> categorie();
 $produit -> sous_categorie();
 
 
 if(isset($_POST['deco']))
 {
-  $user = new userpdo;
   $user->disconnect();
-
 } 
 ?>
 
 <?php $tab=$produit -> categorie();?>
 <?php $tab1=$produit -> sous_categorie();?>
   <li>
-      <a class="menu" href="">Catégorie</a>
+      <a class="menu" href="produits.php">Boutique</a>
       <ul>
+            <li>
+                <a class="menu" href="index.php">Accueil</a>
+            </li>
               <?php
               for($j=0; $j < sizeof($tab); $j++)
               {
@@ -37,7 +39,7 @@ if(isset($_POST['deco']))
                   <a class="menu" href="sous-categorie.php?type=<?php echo $tab[$j][2];?>&id=<?php  echo $tab[$j][0];?>"><?php echo $tab[$j][1];?></a>
                     <ul>
                 <?php 
-                  for($i=0; $i < sizeof($tab); $i++)
+                  for($i=0; $i < sizeof($tab1); $i++)
                   {
                     ?>
                     <li>
@@ -64,15 +66,28 @@ if(isset($_POST['deco']))
             <a class="menu" href="profil.php">Mon profil</a>
           </li>
           <li>
-            <a class="menu" href="commandes.php">Mes commandes</a>
-          </li>  
+            <a class="menu" href="commande.php">Mes commandes</a>
+          </li>
+
+          <?php 
+          $monprofil=$user->getAllInfos();
+          if($monprofil[0][6] == "admin")
+          {
+          ?>
+          <li>
+            <a class="menu" href="administration.php">Administration</a>
+          </li> 
+          <?php
+          }
+          ?>
+
         </ul>
    </li>
-   <li>
+   <li class="logo_responsive">
       <a href="index.php"><div class="logohover"></div></a>      
    </li>
    <li>
-      <a href="panier.php"><img src="../img/logo_panier.png" height="40px" ></a>
+      <a href="panier.php"><div class="logopanierhover"></div></a>
   </li>
   <li>
       <form class="disconnect" method="post" action="" >
@@ -87,7 +102,7 @@ else
 <li>
       <a href="contact.php">Contactez-nous</a>  
   </li>
-  <li>
+  <li class="logo_responsive">
        <a href="index.php"><div class="logohover"></div></a>      
   </li>
    <li>

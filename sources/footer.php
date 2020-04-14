@@ -1,12 +1,23 @@
+<?php 
+$produit = new produit;
+$tab=$produit -> categorie();
+?>
+
+
 <footer>
 	<div class="categorie">
 		<div>
 			<h3>Categorie</h3>
 		</div>
 		<div class="titre">
-			<a href="sous-categorie?type=gamer">Gamer</a>
-			<a href="sous-categorie?type=bureautique">Bureautique</a>
-			<a href="sous-categorie?type=multimedia">Multimédia</a>
+			<?php 
+			for($j=0; $j < sizeof($tab); $j++)
+             {
+             	?>
+             	<a class="menu" href="sous-categorie.php?type=<?php echo $tab[$j][2];?>&id=<?php  echo $tab[$j][0];?>"><?php echo $tab[$j][1];?></a>
+           		<?php	
+             }
+			?>
 		</div>
 	</div>
 	<div class="footer">
